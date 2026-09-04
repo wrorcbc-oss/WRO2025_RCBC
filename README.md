@@ -1,5 +1,5 @@
 # WRO2025_RCBC
-# 🚀 WRO 2025 Future Engineers – RCBC
+# 🚀 WRO 2026 Future Engineers – RCBC
 
 <center>
 <img src="other/transparent_only_logo_WRO2025_FE_ANTi_logo_05-05-2025.png" alt="Banner" width="600">
