@@ -467,8 +467,8 @@ Our software implementation employs a distributed processing architecture that o
 <td width="60%">
 
 **Processing Distribution**:
-- **Vision Processing Unit**: STM32H747 handling real-time image analysis and high-level decision making
-- **Sensor Fusion Unit**: nRF52832 managing multi-sensor data acquisition and preprocessing
+- **Vision Processing Unit**: Raspberry Pi 4 handling real-time image analysis and high-level decision making
+- **Sensor Fusion Unit**: esp32 managing multi-sensor data acquisition and preprocessing
 - **Communication Bridge**: Bidirectional UART protocol at 115200 baud for inter-processor data exchange
 
 **Core Software Components**:
