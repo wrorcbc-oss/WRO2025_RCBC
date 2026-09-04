@@ -155,8 +155,8 @@ Selected for superior layer adhesion, impact resistance, and thermal stability r
 - **Travel & Overhangs**: Travel speed 500 mm/s, Overhang reduction 30-20-10%
 - **Bridge Control**: External bridges 25 mm/s, Internal bridges 160 mm/s
 
-### 📁 3MF File Format Advantage
-**Why 3MF for Maximum Reproducibility:**
+### 📁 STL File Format Advantage
+**Why STL for Maximum Reproducibility:**
 - **Universal Compatibility**: Works across all printer brands and slicing software, unlike machine-specific G-code
 - **Complete Scene Preservation**: All print settings, orientations, and arrangements embedded
 - **Advanced Feature Support**: Custom support placements, support settings, and manual modifications preserved
@@ -177,17 +177,17 @@ Selected for superior layer adhesion, impact resistance, and thermal stability r
 
 **Phase 1: Drive Train Assembly & Power Transmission**
 1. **Differential System Installation**: Precision alignment of 4-gear mechanism ensuring smooth power transfer
-2. **Motor Integration**: Secure mounting of 1500 RPM N20 motor with custom enclosure using M2 hardware
+2. **Motor Integration**: Secure mounting of 450 RPM JGA270-370 motor with custom enclosure using M2 hardware
 3. **Gear Meshing Verification**: Ensure proper engagement of 25T and 26T spur gears with optimal backlash
 
 **Phase 2: Steering System Integration & Control**
 1. **Ackermann Mechanism Assembly**: Install steering arms and linkage with 4 M2 screws and 2 M2 lock nuts
-2. **Servo Integration**: Connect Feetech FS0307 servo to steering mechanism with precise alignment
-3. **Front Wheel System**: Install bearings and front rims ensuring smooth rotation and minimal play
+2. **Servo Integration**: Connect Feetech Mg966R servo to steering mechanism with precise alignment
+3. **Back Wheel System**: Install bearings and Back rims ensuring smooth rotation and minimal play
 
 **Phase 3: Chassis Completion & System Integration**
-1. **Electronic Platform Mounting**: Secure pertinax boards with all electronic systems in designated slots
-2. **Power System Installation**: Mount Power-Xtra LiPo battery in optimized weight distribution position
+1. **Electronic Platform Mounting**: Secure Bread boards with all electronic systems in designated slots
+2. **Power System Installation**: Mount LiPo battery in optimized weight distribution position
 3. **Final Mechanical Validation**: Comprehensive check of all systems for optimal performance and reliability
 
 ## 🔄 Component Development & Engineering Iteration
@@ -220,7 +220,7 @@ Selected for superior layer adhesion, impact resistance, and thermal stability r
 
 **Technical Tire Comparison & Engineering Analysis:**
 
-| Engineering Aspect | LEGO 87697 | Custom Silicone Tires |
+| Engineering Aspect | Our Robotic Wheel TIre | Custom Silicone Tires |
 |-------------------|------------|----------------------|
 | **Material Composition** | SEBS (Styrene-Ethylene-Butylene-Styrene) | Custom silicone compound formulation |
 | **Theoretical Traction** | Good predictable performance | Higher theoretical coefficient |
@@ -229,8 +229,8 @@ Selected for superior layer adhesion, impact resistance, and thermal stability r
 | **Manufacturing Consistency** | Excellent quality control | Variable performance between batches |
 | **Weight Impact** | Minimal additional mass | Slightly increased rotational mass due to a larger inner rim with more filling, necessary for better stretching of the silicone tire |
 
-**Final Engineering Selection: LEGO 87697**
-- **Optimal Dimensions**: 21mm diameter × 12mm width fitting our size constraints
+**Final Engineering Selection: Robotic Wheel Tire**
+- **Optimal Dimensions**: 65mm diameter × 28mm width fitting our size constraints
 - **Key Design Feature**: Circumferential center ridge providing stability and predictable handling
 - **Performance Characteristics**: Consistent traction with minimal rolling resistance
 - **Reliability Assurance**: Proven durability under extended competition conditions
