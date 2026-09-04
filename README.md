@@ -478,8 +478,7 @@ Our software implementation employs a distributed processing architecture that o
 
 </td>
 <td width="40%">
-<img src="src/<img width="899" height="1599" alt="system implmention" src="https://github.com/user-attachments/assets/2b2c160a-562c-4347-9ca5-7ac7f8b22a97" />
-" alt="Software Development Environment" width="100%">
+<img src="src/1788558229643_image.png" alt="Software Development Environment" width="100%">
 <p align="center"><em>Integrated development and testing setup</em></p>
 </td>
 </tr>
@@ -522,6 +521,21 @@ We implemented magnetic USB connectors for the camera microcontroller, providing
 We selected the **HSV color space** for its superior performance under variable lighting conditions compared to traditional RGB representation. Detection thresholds for the red and green obstacle pillars, as well as the white track floor, were manually calibrated and fine-tuned per venue using a dedicated debug mask window.
 
 **Technical Rationale**: HSV colorspace provides adequate performance for our application requirements, isolating hue independently from brightness/lighting variance, while more complex approaches (e.g. machine learning-based detection) would introduce unnecessary computational overhead without significant benefits for this specific use case.
+
+**Calibration Debug Windows**:
+
+<table>
+<tr>
+<td width="50%">
+<img src="src/1788558162827_image.png" alt="Green Mask Calibration" width="100%">
+<p align="center"><em>Green mask calibration window</em></p>
+</td>
+<td width="50%">
+<img src="src/1788558165154_image.png" alt="Red Mask Calibration" width="100%">
+<p align="center"><em>Red mask calibration window</em></p>
+</td>
+</tr>
+</table>
 
 <div align="center">
 <img src="src/hard_light_condition_tests.jpg" alt="Environmental Testing Validation" width="600">
@@ -572,6 +586,19 @@ IF front distance
 - **Red Object Detection**: Right-side bias navigation with maintained offset
 - **Green Object Detection**: Left-side bias navigation with maintained offset  
 - **Position Maintenance**: Consistent pixel positioning for smooth obstacle tracking
+
+<table>
+<tr>
+<td width="50%">
+<img src="src/1788558167694_image.png" alt="Red Obstacle Detection Example" width="100%">
+<p align="center"><em>Live red obstacle detection with bounding box</em></p>
+</td>
+<td width="50%">
+<img src="src/1788558170273_image.png" alt="Green Obstacle Detection Example" width="100%">
+<p align="center"><em>Live green obstacle detection during track navigation</em></p>
+</td>
+</tr>
+</table>
 
 ### **Sensor and motor Fusion Implementation**
 
