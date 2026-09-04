@@ -852,7 +852,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 </div>
 
-- **For mechanical design and 3D models**: [Models Documentation](models/README.md)  
+- **For mechanical design and 3D models**: * [Models Documentation](https://github.com/wrorcbc-oss/WRO2025_RCBC/tree/main/Mechanical_Design)
 - **For electrical schematics and wiring**: [Schemes Documentation](schemes/README.md)  
 - **For software implementation and algorithms**: [Software Documentation](src/README.md)  
 - **For competition performance videos**: [Video Documentation](video/README.md)  
