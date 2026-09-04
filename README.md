@@ -478,7 +478,8 @@ Our software implementation employs a distributed processing architecture that o
 
 </td>
 <td width="40%">
-<img src="src/image_processing_setup.jpg" alt="Software Development Environment" width="100%">
+<img src="src/<img width="899" height="1599" alt="system implmention" src="https://github.com/user-attachments/assets/2b2c160a-562c-4347-9ca5-7ac7f8b22a97" />
+" alt="Software Development Environment" width="100%">
 <p align="center"><em>Integrated development and testing setup</em></p>
 </td>
 </tr>
@@ -516,8 +517,6 @@ We implemented magnetic USB connectors for the camera microcontroller, providing
    - Compile source code in Arduino IDE with ESP32 board package support
    - Upload compiled binary via micro USB interface to evaluation board
    - Precompiled firmware deployment ensuring reliable sensor and motor operation
-
-### 🎨 **Vision Processing Strategy**
 
 ### 🎨 **Vision Processing Strategy**
 We selected the **HSV color space** for its superior performance under variable lighting conditions compared to traditional RGB representation. Detection thresholds for the red and green obstacle pillars, as well as the white track floor, were manually calibrated and fine-tuned per venue using a dedicated debug mask window.
@@ -574,7 +573,7 @@ IF front distance
 - **Green Object Detection**: Left-side bias navigation with maintained offset  
 - **Position Maintenance**: Consistent pixel positioning for smooth obstacle tracking
 
-### **Sensor Fusion Implementation**
+### **Sensor and motor Fusion Implementation**
 
 **Data Integration Pipeline**:
 ```
@@ -697,10 +696,11 @@ The algorithm handles all possible obstacle combinations through systematic patt
 <img src="src/example_all_detection.jpg" alt="Multi-Color Detection" style="width:80%;">
 </div>
 
-### Software & Algorithms – Potential Improvements
-- Replace hand-tuned PID with online adaptive gain scheduling based on lap time → we already have easy possible integration of lap-time logging via the nRF52832.
-- Add optical flow (using the GC2145 bottom 80×80 pixels) for dead-reckoning backup when camera loses the line detection.
-- Over-the-air firmware update via BLE (nRF52832) → Eliminates the need for cables during competition day, further improving ease of use compared to magnetic connections.
+### **Software & Algorithms – Potential Improvements**
+- Replace hand-tuned proportional-only steering with a full PID controller → would reduce oscillation and improve response to sudden error changes, especially during obstacle avoidance.
+- Add IMU-based heading correction (e.g. MPU6050 on the ESP32) as a backup when ultrasonic wall readings are lost or unreliable, instead of relying on ultrasonic distance alone for cornering.
+- Auto-calibrate HSV thresholds at startup using a reference color card, reducing the need for manual venue-specific tuning of the lane/red/green masks.
+- Enable bidirectional UART communication → let the ESP32 report back sensor data (front/left/right distances) to the Raspberry Pi, allowing more informed vision-based decisions instead of one-way commands.
 
 Complete software implementation details available in our [source code documentation](src/README.md).
 
@@ -735,21 +735,21 @@ Complete performance demonstrations showcasing our vehicle's capabilities:
 
 ## 🌐 **GitHub Utilization & Development** <a id="github-utilization--development"></a>
 
-GitHub served as the backbone of our project management, version control, and public documentation. To maintain a clean and professional repository, we adopted a milestone-driven workflow: developing locally and committing updates only upon completing major engineering objectives (e.g., chassis finalization, sensor integration, or core algorithm deployment), ensuring a streamlined and readable history for the community.
+GitHub served as the central platform for project management, version control, and public documentation. To ensure a well-organized and professional repository, we followed a milestone-based development workflow. Development and testing were conducted locally, with updates committed and documented after the completion of major engineering milestones, such as chassis finalization, sensor integration, and deployment of the core algorithms. This approach maintained a clear, structured, and easily traceable project history for both the development team and the wider community.
 
 ### **Development Workflow Strategy**
 
 **Structured Development Approach**:
-- **Local Development Environment**: Intensive development on local machines with feature branches
-- **Milestone-Based Committing**: Strategic commits representing significant technical achievements
-- **Quality Assurance**: Thorough testing and documentation before public repository updates
-- **Clean Public History**: Professional repository showcasing polished development progression
+- **Local Development Environment**: Focused development work carried out on local machines using feature branches
+- **Milestone-Based Committing**: Deliberate commits made at key points marking meaningful technical progress
+- **Quality Assurance**: Careful testing and documentation completed before pushing updates to the public repository
+- **Clean Public History**: A well-organized repository that reflects a polished and professional development journey
 
-**File Sharing and Public Updates**: o ensure our work is highly accessible and easy to replicate, all project assets—including CAD files (models/), electrical schematics (schemes/), and source code (src/)—are shared publicly at every major milestone. Before publishing, we meticulously organize and refine our code, data, and documentation to present a clean, structured repository that is easy to navigate. For complete transparency and version control, the exact date and time of the latest updates are prominently recorded within our README files.
+**File Sharing and Public Updates**: To keep our work accessible and easy for others to reproduce, all project assets — including CAD files (`models/`), electrical schematics (`schemes/`), and source code (`src/`) — are published publicly at every major milestone. Prior to each release, we carefully organize and clean up our code, data, and documentation to maintain a structured, easy-to-navigate repository. To support full transparency and proper version tracking, the exact date and time of each update is clearly noted in our README files.
 
 ### **Commit History & Project Evolution**
 
-Our development timeline from july to september 2025 demonstrates consistent progress and systematic engineering:
+Our development timeline from June  to september 2026 demonstrates consistent progress and systematic engineering:
 
 **Key Development Milestones**:
 - **July 2026**: Core mechanical design and electronic system implementation
@@ -788,8 +788,7 @@ Our development timeline from july to september 2025 demonstrates consistent pro
 - **Source Code Availability**: Complete software implementation with detailed comments and explanations
 - **Troubleshooting Guidance**: Solutions to common implementation challenges
 
-**Supporting Others and Future Development**: While we actively encourage learning from our project, we intentionally chose the AGPL-3.0 license to prevent our work from being absorbed into closed-source or private projects. This strong copyleft license ensures that any future developments—whether they build upon our code, hardware architecture, or mechanical design—must remain open and accessible to everyone. We invite the robotics community to replicate, modify, and elevate our work for educational, research, or competition purposes. Thanks to our platform's modular architecture and comprehensive documentation, adapting the system to new challenges is straightforward. We highly welcome community contributions, such as advanced path-planning optimizations or new sensor integrations, via GitHub pull requests and issues.
-
+**Supporting Others and Future Development**: We're happy to see others learn from what we've built, which is exactly why we chose the AGPL-3.0 license — it deliberately prevents our work from being folded into closed-source or private projects. Thanks to this strong copyleft protection, anything built on top of our code, hardware, or mechanical design has to stay open and available to everyone. Researchers, students, and other teams are welcome to copy, adapt, and expand on what we've done for learning, research, or competition use. Since our codebase is kept simple and clearly documented, teams without deep computer vision experience should still be able to adjust it for a new venue or challenge without much difficulty. We'd also genuinely welcome outside contributions — whether that's a better control algorithm or support for new sensors — through pull requests or issues on GitHub.
 **Future Development Pathways**:
 - **Modular Architecture**: Easy component upgrades and system modifications using our socket-based design
 - **Comprehensive Documentation**: Every design decision and implementation detail documented
@@ -827,7 +826,7 @@ This project is licensed under the **GNU Affero General Public License v3.0 (AGP
 ```
 GNU Affero General Public License v3.0
 
-Copyright (C) 2025 Atakan Ersoy (atakanersoy)
+
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published
