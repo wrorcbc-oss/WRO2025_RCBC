@@ -472,9 +472,9 @@ Our software implementation employs a distributed processing architecture that o
 - **Communication Bridge**: Bidirectional UART protocol at 115200 baud for inter-processor data exchange
 
 **Core Software Components**:
-- [`open.py`](src/open.py) - Open challenge navigation algorithms
-- [`obstacle.py`](src/obstacle.py) - Obstacle challenge with integrated parking
-- [`uart_slave.ino`](src/uart_slave.ino) - Sensor management firmware
+- [`vision_source.py`](src/open.py) - Open challenge navigation algorithms and obstacle challenge with integrated parking
+- [`calibration.py`](src/obstacle.py) - calibration for the different variables  
+- [`esp32_car.ino`](src/uart_slave.ino) - Sensor and motor management firmware
 
 </td>
 <td width="40%">
@@ -484,41 +484,45 @@ Our software implementation employs a distributed processing architecture that o
 </tr>
 </table>
 
-### 💾 **Development Environment & Code Deployment**
+### 📄 **Development Environment & Code Deployment**
 
-#### **STM32H747 (Camera Microcontroller)**
-- **Programming Language**: MicroPython for rapid development and testing
-- **Development Interface**: Direct micro USB connection to evaluation board
+#### **Raspberry Pi 4 Model B (Camera Microcontroller)**
+- **Programming Language**: Python 3 for rapid development and testing
+- **Development Interface**: Direct micro USB / HDMI connection to Raspberry Pi with a live OpenCV debug window (`cv.imshow`)
 - **Core Libraries**:
-  - `machine` - Hardware abstraction for PWM, GPIO, and UART control
-  - `pyb` - STM32-specific peripheral functions and timer management
-  - `sensor` - Camera interface and real-time image processing
+  - `opencv-python (cv2)` - Image preprocessing, HSV color masking, and contour-based object detection
+  - `numpy` - Array operations for HSV bounds and morphological kernels
+  - `pyserial` - UART serial communication with the ESP32 microcontroller
 
-#### **nRF52832 (Sensor Microcontroller)**
-- **Programming Language**: Arduino C++ for efficient sensor data handling
+#### **esp32 (Sensor and Motor Microcontroller)**
+- **Programming Language**: Arduino C++ for efficient sensor and motor data handling
 - **Development Interface**: Standard micro USB connection to evaluation board
 - **Essential Libraries**:
-  - `Wire.h` - I2C communication protocol for sensor networks
+  - `ESP32Servo.h` - PWM-based control of the steering servo
+- **Communication Protocol**: UART Serial (115200 baud) between the Raspberry Pi and ESP32, used to relay vision-based obstacle data (color, distance, position)
 
 #### **Development Workflow Optimization**
 We implemented magnetic USB connectors for the camera microcontroller, providing significant advantages during intensive development cycles. The magnetic interface enables rapid connection changes, prevents physical port damage from repeated use, and streamlines the programming and debugging process.
 
 #### **Code Deployment Process**
-1. **STM32H747 MicroPython Deployment**:
+
+1. **Raspberry Pi 4 Model B Python Deployment**:
    - Transfer `.py` source files directly to microcontroller filesystem using magnetic USB connection
-   - Automatic execution initialization from `main.py` on system startup
+   - Automatic execution initialization from `vision_source.py` on system startup
+   - Adding the calibration code in order to adjust the variables
    - No compilation overhead - immediate interpreted execution for rapid iteration
 
-2. **nRF52832 Arduino Deployment**:
-   - Compile source code in Arduino IDE with nRF5 board package support
+2. **esp32 Arduino Deployment**:
+   - Compile source code in Arduino IDE with ESP32 board package support
    - Upload compiled binary via micro USB interface to evaluation board
-   - Precompiled firmware deployment ensuring reliable sensor operation
+   - Precompiled firmware deployment ensuring reliable sensor and motor operation
 
 ### 🎨 **Vision Processing Strategy**
 
-We selected the **CIELAB color space** for its superior performance under variable lighting conditions compared to traditional RGB or HSV representations. Our custom MATLAB analysis tool systematically determines optimal detection thresholds.
+### 🎨 **Vision Processing Strategy**
+We selected the **HSV color space** for its superior performance under variable lighting conditions compared to traditional RGB representation. Detection thresholds for the red and green obstacle pillars, as well as the white track floor, were manually calibrated and fine-tuned per venue using a dedicated debug mask window.
 
-**Technical Rationale**: LAB colorspace provides adequate performance for our application requirements, while machine learning approaches would introduce unnecessary complexity without significant benefits for this specific use case.
+**Technical Rationale**: HSV colorspace provides adequate performance for our application requirements, isolating hue independently from brightness/lighting variance, while more complex approaches (e.g. machine learning-based detection) would introduce unnecessary computational overhead without significant benefits for this specific use case.
 
 <div align="center">
 <img src="src/hard_light_condition_tests.jpg" alt="Environmental Testing Validation" width="600">
@@ -527,67 +531,43 @@ We selected the **CIELAB color space** for its superior performance under variab
 
 ### 🧭 **Navigation Algorithm Implementation**
 
-#### **Open Challenge Navigation**
+#### **Obstacle Challenge Navigation**
 
 **State Machine Flow**:
-```
-Initial Forward → Follow Wall → Turn Corner → Follow Wall (repeat)
-      ↑               ↑             ↑             ↑
-  ToF + Color     Camera PID    IMU 90° Turn  Continue
-  Detection      Wall Tracking                Navigation
-```
 
-**Open Challenge Pseudocode**:
-```
-INITIALIZE sensors, set direction = unknown
-WHILE direction == unknown:
-    DRIVE forward using IMU guidance
-    DETECT orange/blue colors
-    IF orange detected first: SET direction = clockwise
-    IF blue detected first: SET direction = counterclockwise
-    IF front ToF < 800mm: TRANSITION to wall following
+Vision Obstacle Avoidance → Clearance → Corner Turn → Wall Following (repeat)
+↑ ↑ ↑ ↑
+Camera Color Post-Obstacle Ultrasonic Ultrasonic
+Detection (R/G) Stabilizing Front Distance Left/Right PID
 
-WHILE corner_count < 12:
-    FOLLOW inner wall using camera PID
-    DETECT orange/blue corners
-    IF corner detected: INCREMENT corner_count
-    IF wall lost and min_distance traveled: EXECUTE 90° turn
-    UPDATE odometry and heading
 
-EXECUTE final forward movement
-STOP
-```
+**Navigation Pseudocode**:
 
-#### **Obstacle Challenge Strategy**
+INITIALIZE sensors, center steering, stop motor
 
-**Multi-State Operation**:
-```
-Determine Direction → Follow Color → Lost Color → Pass Color → U-Turn → Parking
-        ↑                 ↑             ↑            ↑           ↑         ↑
-   ToF + Color        Camera PID      Search      Avoidance   180° Turn  Magenta
-   Detection          Color Track     Pattern     Maneuver    Maneuver   Detection
-```
+LOOP:
+READ ultrasonic distances (front, left, right)
+READ vision data from camera (color, distance, x-position)
 
-**Obstacle Challenge Pseudocode**:
-```
-INITIALIZE sensors
-DETERMINE direction using side ToF sensors
-EXECUTE initial alignment maneuver
+IF obstacle color == RED and distance within range:
+    STEER hard RIGHT, drive at obstacle speed
+    CONTINUE to next loop
 
-WHILE corner_count < 13:
-    NAVIGATE using camera color detection
-    IF red detected: FOLLOW with right offset
-    IF green detected: FOLLOW with left offset  
-    IF color lost: SEARCH pattern
-    IF color not found: PASS obstacle maneuver
-    DETECT orange/blue corners for lap counting
+IF obstacle color == GREEN and distance within range:
+    STEER hard LEFT, drive at obstacle speed
+    CONTINUE to next loop
 
-EXECUTE 180° U-turn maneuver
-APPROACH parking zone
-DETECT magenta parking marker
-EXECUTE parallel parking sequence
-STOP
-```
+IF recently cleared an obstacle (within clearance window):
+    CENTER steering, drive at clearance speed
+    CONTINUE to next loop
+
+IF currently turning a corner:
+    CONTINUE steering toward corner direction
+    IF front distance becomes clear OR max corner time exceeded:
+        END corner, center steering
+    CONTINUE to next loop
+
+IF front distance
 
 **Color-Specific Behaviors**:
 - **Red Object Detection**: Right-side bias navigation with maintained offset
@@ -598,10 +578,10 @@ STOP
 
 **Data Integration Pipeline**:
 ```
-nRF52832 Sensors ←→  UART  ←→ STM32H747 → Sensor Fusion → Control Decisions
-     ↑                            ↑             ↑               ↓
-  ToF Left                      Camera     PID Controller   Motor/Servo
-  ToF Right                     Vision     State Machine     Actuators
+esp32 Sensors ←→  UART  ←→ Raspberry Pi 4 Model B → Sensor Fusion → Control Decisions
+     ↑                            ↑                   ↑               ↓
+  ToF Left                      Camera           PID Controller   Motor/Servo
+  ToF Right                     Vision           State Machine     Actuators
  Encoder Data                  IMU Data
                                ToF Front
 ```
@@ -610,29 +590,26 @@ nRF52832 Sensors ←→  UART  ←→ STM32H747 → Sensor Fusion → Control De
 
 **Steering Control Algorithm**:
 ```python
-# PID controller implementation for smooth navigation
-def calculate_steering_correction(vision_error, heading_error):
-    proportional = vision_error * KP_GAIN
-    integral = integrate_error(vision_error) * KI_GAIN  
-    derivative = calculate_derivative(vision_error) * KD_GAIN
-    return proportional + integral + derivative
+# Proportional controller implementation for smooth navigation
+def calculate_steering_correction(target_cx, frame_center_x):
+    error = target_cx - frame_center_x
+    steering_angle = error * KP_GAIN
+    steering_angle = clamp(steering_angle, -0.5, 0.5)
+    return steering_angle
 ```
 
-### **Bidirectional Inter-Processor Communication**
+### **Inter-Processor Communication**
 
 **UART Protocol Specification**:
-- **Baud Rate**: 115200 for optimal data throughput
-- **Command Structure**: Single-character commands with formatted responses
-- **Data Validation**: Checksum verification and timeout handling
-- **Error Recovery**: Automatic reinitialization on communication failure
+- **Baud Rate**: 115200 for reliable data throughput
+- **Command Structure**: Comma-separated plain-text messages terminated by newline
+- **Data Validation**: Field-count check (color, distance, x-position) before parsing
+- **Error Recovery**: Timeout-based fallback - if no valid message is received within the timeout window, the obstacle state automatically resets to "none detected"
 
-**Master (STM32H747) → Slave (nRF52832) Commands**:
-- `'r'` - Request all sensor data (left_tof, right_tof, encoder)
-- `'t'` - Request left ToF sensor only
-- `'u'` - Request right ToF sensor only  
-- `'e'` - Request encoder travel distance only
-- `'z'` - Reset encoder counter to zero
-
+**Master (Raspberry Pi 4) → Slave (ESP32) Messages**:
+- `R,<distance>,<x_position>` - Red obstacle detected: distance in cm, horizontal pixel position
+- `G,<distance>,<x_position>` - Green obstacle detected: distance in cm, horizontal pixel position
+- `N` - No obstacle currently detected
 **Slave Response Formats**:
 - **All sensors**: `left_distance,right_distance,encoder_distance\n`
 - **Left ToF only**: `left_distance\n`
