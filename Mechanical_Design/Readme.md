@@ -1,6 +1,6 @@
 # Models Documentation
 
-This folder contains the complete 3D CAD models and manufacturing files for Team ANTi's WRO 2025 Future Engineers robot. All mechanical components were custom-designed and manufactured in-house to achieve our goal of creating the world's smallest autonomous vehicle while maintaining optimal performance. This documentation was last updated on **Saturday, November 08, 2025, at 08:13 AM +03**.
+This folder contains the complete 3D CAD models and manufacturing files for Team RCBC's WRO 2026 Future Engineers robot. All mechanical components were custom-designed and manufactured in-house to achieve our goal. 
 
 ## 🎯 Mechanical Design Philosophy
 
@@ -82,7 +82,7 @@ The main chassis integrates all mechanical and electronic systems while maintain
 **Structural Engineering Elements:**
 - **Integrated Component Mounting System**: Precision slots and holders for Electronics, servo, motor, and battery
 - **Optimized Weight Distribution**: Strategic mass placement ensuring stable navigation and quick response
-- **Bearing Integration**: Four precision bearings (one per wheel) for smooth rotation with minimal friction
+- **Bearing Integration**: two precision bearings (one per wheel) for smooth rotation with minimal friction
 - **Access and Maintenance Design**: Strategic openings enabling easy component replacement and field adjustments
 
 ## 🏭 Manufacturing Process & Engineering Solutions
@@ -283,7 +283,7 @@ While silicone promised higher friction coefficients, our ultra-lightweight, hig
 - **Speed Optimization**: Based on comprehensive calculations comparing wheel/tire sizes and motor speeds for the 3m × 3m game field. Development comparisons available at [motor_speed_calculations.jpg](../other/motor_speed_calculations.jpg)
 
 **Structural & Performance Engineering Validation:**
-- **Motor Torque Analysis**: ~0.25 Nm at 6V providing sufficient force for 130g vehicle mass and acceleration requirements
+- **Motor Torque Analysis**: ~1.25 Nm at 12V providing sufficient force for 800g vehicle mass and acceleration requirements
 - **Bearing System Design**: Optimized for minimal friction, long-term reliability, and precise wheel alignment
 - **Steering Load Calculations**: Ackermann mechanism perfectly matched to servo torque capabilities and response requirements
 - **Impact Resistance Validation**: Comprehensive testing under competition conditions confirming structural integrity
