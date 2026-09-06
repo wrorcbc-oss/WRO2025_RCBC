@@ -243,7 +243,7 @@ Our platform represents a breakthrough in high-performance autonomous vehicle de
 - **Steering Mechanism**: Custom Ackermann geometry with metalic servo actuation
 - **Power Management**: Integrated LiPo Batteries with comprehensive power distribution
 
-Complete vehicle documentation with detailed component identification available in [vehicle photos](v-photos/README.md).
+Complete vehicle documentation with detailed component identification available in [vehicle photos](Car_Photos/README.md)
 
 <div align="center">
   <img src="Car_Photos/While_Working.jpeg" alt="Digital to Physical Realization" width="600">
