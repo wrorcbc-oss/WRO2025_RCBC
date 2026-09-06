@@ -328,20 +328,17 @@ While silicone promised higher friction coefficients, our ultra-lightweight, hig
 
 | Component | File | Quantity | CAD Preview | Description |
 |-----------|------|----------|-------------|-------------|
-| **Main Chassis** | [`design_base.3mf`](design_base.3mf) | 1 | <img src="CAD_design_base_1.jpg" width="100"><img src="CAD_design_base_2.jpg" width="100"> | Primary structure with integrated mounting system |
-| **4-Gear Differential** | [`design_4_gear_mini_differential.3mf`](design_4_gear_mini_differential.3mf) | 1 | <img src="CAD_design_4_gear_mini_differential_1.jpg" width="100"><img src="CAD_design_4_gear_mini_differential_2.jpg" width="100"> | Complete differential assembly with 4-gear mechanism and gear slots|
-| **Front Rim** | [`design_front_rim_bearing.3mf`](design_front_rim_bearing.3mf) | 2 | <img src="CAD_design_front_rim_bearing_1.jpg" width="100"><img src="CAD_design_front_rim_bearing_2.jpg" width="100"> | Front wheel rims with integrated bearing seats (left/right) |
-| **Steering Arm** | [`design_steering_arm.3mf`](design_steering_arm.3mf) | 2 | <img src="CAD_design_steering_arm_1.jpg" width="100"><img src="CAD_design_steering_arm_2.jpg" width="100"> | Ackermann steering arms (left/right) |
-| **Steering Linkage** | [`design_steering_linkage.3mf`](design_steering_linkage.3mf) | 1 | <img src="CAD_design_steering_linkage.jpg" width="100"> | Steering connection mechanism |
-| **25T Spur Gear** | [`design_spur_25_gear.3mf`](design_spur_25_gear.3mf) | 1 | <img src="CAD_design_spur_25_gear_1.jpg" width="100"><img src="CAD_design_spur_25_gear_2.jpg" width="100"> | 25-tooth torque transmission gear |
-| **26T Spur Gear** | [`design_spur_26_gear.3mf`](design_spur_26_gear.3mf) | 1 | <img src="CAD_design_spur_26_gear_1.jpg" width="100"><img src="CAD_design_spur_26_gear_2.jpg" width="100"> | 26-tooth motor output gear |
-| **12T Bevel Gear** | [`design_bevel_12_gear.3mf`](design_bevel_12_gear.3mf) | 4 | <img src="CAD_design_bevel_12_gear_1.jpg" width="100"><img src="CAD_design_bevel_12_gear_2.jpg" width="100"> | Differential bevel gears (4 required for full assembly) |
-| **Motor Lid** | [`design_motor_lid.3mf`](design_motor_lid.3mf) | 1 | <img src="CAD_design_motor_lid.jpg" width="100"> | N20 motor mounting enclosure |
-| **Long Rear Rim** | [`design_back_rim_long.3mf`](design_back_rim_long.3mf) | 1 | <img src="CAD_design_back_rim_long.jpg" width="100"> | Extended for right side, connecting farther from the gear |
-| **Short Rear Rim** | [`design_back_rim_short.3mf`](design_back_rim_short.3mf) | 1 | <img src="CAD_design_back_rim_short.jpg" width="100"> | Shorter for left side, connecting closer to the gear |
-| **Front Top Cover** | [`design_front_top_cover.3mf`](design_front_top_cover.3mf) | 1 | <img src="CAD_design_front_top_cover_1.jpg" width="100"><img src="CAD_design_front_top_cover_2.jpg" width="100"> | Electronics protection cover |
-| **Front Bottom Cover** | [`design_front_bottom_cover.3mf`](design_front_bottom_cover.3mf) | 1 | <img src="CAD_design_front_bottom_cover.jpg" width="100"> | Underbody protection |
-| **Button Cap** | [`design_button_cap.3mf`](design_button_cap.3mf) | 1 | <img src="CAD_design_button_cap_1.jpg" width="100"><img src="CAD_design_button_cap_2.jpg" width="100"> | Start button interface |
+| **Main Chassis** | [`RCBC Chassis.3MF`](Mechanical_Design/RCBC%20Chassis.3MF) | 1 | <img src="Mechanical_Design/Chassis.png" width="100"> | Primary structure with integrated mounting system |
+| **Motor Bracket** | [`JGA25-370 motor bracket.step.3MF`](Mechanical_Design/JGA25-370%20motor%20bracket.step.3MF) | 1 | <img src="Mechanical_Design/Motor%20Bracket.png" width="100"> | Mounting bracket specifically designed for JGA25-370 motor |
+| **Ackerman Axle** | [`Ackerman Axle.3MF`](Mechanical_Design/Ackerman%20Axle.3MF) | 1 | <img src="Mechanical_Design/Ackerman%20Axle.png" width="100"> | Main steering linkage for Ackermann geometry |
+| **Knuckle Joint** | [`Knuckle_Joint_boze.3MF`](Mechanical_Design/Knuckle_Joint_boze.3MF) | 2 | <img src="Mechanical_Design/Boze.png" width="100"> | Steering knuckle joints for front wheels |
+| **Rotation Left** | [`Rotation_Left.3MF`](Mechanical_Design/Rotation_Left.3MF) | 1 | <img src="Mechanical_Design/Left%20Rotation.png" width="100"> | Left side steering rotation component |
+| **Rotation Right**| [`Rotation_Right.3MF`](Mechanical_Design/Rotation_Right.3MF) | 1 | <img src="Mechanical_Design/Right%20Rotation.png" width="100"> | Right side steering rotation component |
+| **Servo Connector** | [`Servo_Connector.3MF`](Mechanical_Design/Servo_Connector.3MF) | 1 | <img src="Mechanical_Design/Servo%20Connector.png" width="100"><img src="Mechanical_Design/Right%20Connector.png" width="100"> | Linkage connecting the steering servo to the axle |
+| **Spur Gear** | [`spur gear_am.3MF`](Mechanical_Design/spur%20gear_am.3MF) | 1 | <img src="Mechanical_Design/Motor_Spur_gear.png" width="100"> | Main torque transmission spur gear |
+| **Drive Shaft** | [`Shaft.3MF`](Mechanical_Design/Shaft.3MF) | 1 | <img src="Mechanical_Design/Shaft.png" width="100"> | Main mechanical drive transmission shaft |
+| **Camera Casing** | [`camera casing 1.3MF`](Mechanical_Design/camera%20casing%201.3MF) | 1 |  | Enclosure and protection for the vision system |
+| **Rear Spoiler** | [`spoiler.3MF`](Mechanical_Design/spoiler.3MF) | 1 |  | Aerodynamic rear spoiler structure |
 
 
 ## 🚀 Engineering Design & Development Process
