@@ -6,7 +6,6 @@
   <img src="Others/Team%20Logo.png" alt="Team Logo" width="600">
 </p>
 
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/anti.wro/)
 [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/@WRO_RCBC_EGYPT)
 </center>
 
@@ -898,7 +897,6 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 ### **Comprehensive documentation enabling easy replication and future development**
 
-[![Instagram](https://img.shields.io/badge/Follow%20our%20Journey-Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/anti.wro/)
 [![YouTube](https://img.shields.io/badge/Watch%20Performance%20Videos-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@solipsy.)
 
 </div>
