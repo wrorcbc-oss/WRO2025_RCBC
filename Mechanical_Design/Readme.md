@@ -337,8 +337,8 @@ While silicone promised higher friction coefficients, our ultra-lightweight, hig
 | **Servo Connector** | [`Servo_Connector.3MF`](Mechanical_Design/Servo_Connector.3MF) | 1 | <img src="Mechanical_Design/Servo%20Connector.png" width="100"><img src="Mechanical_Design/Right%20Connector.png" width="100"> | Linkage connecting the steering servo to the axle |
 | **Spur Gear** | [`spur gear_am.3MF`](Mechanical_Design/spur%20gear_am.3MF) | 1 | <img src="Mechanical_Design/Motor_Spur_gear.png" width="100"> | Main torque transmission spur gear |
 | **Drive Shaft** | [`Shaft.3MF`](Mechanical_Design/Shaft.3MF) | 1 | <img src="Mechanical_Design/Shaft.png" width="100"> | Main mechanical drive transmission shaft |
-| **Camera Casing** | [`camera casing 1.3MF`](Mechanical_Design/camera%20casing%201.3MF) | 1 |  | Enclosure and protection for the vision system |
-| **Rear Spoiler** | [`spoiler.3MF`](Mechanical_Design/spoiler.3MF) | 1 |  | Aerodynamic rear spoiler structure |
+| **Camera Casing** | [`camera casing 1.3MF`](Mechanical_Design/camera%20casing%201.3MF) | 1 | <img src="Mechanical_Design/Camera%20Casing.png" width="100"> | Enclosure and protection for the vision system |
+| **Rear Spoiler** | [`spoiler.3MF`](Mechanical_Design/spoiler.3MF) | 1 | <img src="Mechanical_Design/Spoiler.png" width="100"> | Aerodynamic rear spoiler structure |
 
 
 ## 🚀 Engineering Design & Development Process
