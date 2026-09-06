@@ -325,8 +325,8 @@ Our mechanical design philosophy centers on achieving maximum capability within 
 ### **Design Integration Approach**
 
 <div align="center">
-<img src="models/CAD_fusion_isometric_view.jpg" alt="Digital Design Model" height="325">
-<img src="models/IRL_isometric_view.jpg" alt="Physical Implementation" height="325">
+<img src="Mechanical_Design/Final%20Car%20Design.png" alt="Digital Design Model" height="325">
+<img src="Mechanical_Design/RCBC's%20Chassis.jpg" alt="Physical Implementation" height="325">
 </div>
 <p align="center">
   <em>Digital design precision translated to physical implementation through advanced manufacturing techniques</em>
@@ -337,9 +337,10 @@ Our mechanical design philosophy centers on achieving maximum capability within 
 Our custom Ackermann steering system ensures each wheel maintains optimal alignment during turns, minimizing tire scrub and maximizing maneuverability.
 
 <div align="center">
-<img src="models/3d_CAD_motion.gif" alt="Steering Mechanism Animation" height="325">
-<img src="models/ackermann_calculations_turning_radius.jpg" alt="Steering Geometry Analysis" height="325">
+<img src="Mechanical_Design/Ackerman%20Steering.png" alt="Steering Mechanism Animation" height="325">
+<img src="Mechanical_Design/Closer%20Ackerman%20Look.png" alt="Steering Geometry Analysis" height="325">
 </div>
+
 <p align="center">
   <em>Dynamic steering simulation and geometric analysis ensuring optimal turning performance</em>
 </p>
@@ -358,23 +359,24 @@ Our custom Ackermann steering system ensures each wheel maintains optimal alignm
 ### **Power Transmission System**
 
 The custom 2-gear differential ensures smooth torque distribution during turning maneuvers, preventing wheel slip and maintaining traction.
-
 <div align="center">
 <table align="center">
 <tr>
 <td align="center">
-<img src="models/differential_test.gif" alt="Differential Function Test" height="430">
+<img src="Mechanical_Design/Gear%20System.png" alt="Gear System Test" height="430">
 </td>
 <td align="center">
-<img src="models/CAD_design_4_gear_mini_differential_1.jpg" alt="Differential Assembly View 1" height="213"><br>
-<img src="models/CAD_design_4_gear_mini_differential_2.jpg" alt="Differential Assembly View 2" height="213">
+<img src="Mechanical_Design/Gear%20System%20Picture%202.png" alt="Gear Assembly View 1" height="213"><br>
+<img src="Mechanical_Design/Gear%20System%20Picture%203.png" alt="Gear Assembly View 2" height="213">
 </td>
 </tr>
 </table>
 </div>
 <p align="center">
-  <em>Physical validation of differential operation and comprehensive CAD documentation</em>
+  <em>Physical validation of drive transmission operation and comprehensive CAD documentation</em>
 </p>
+
+<div align="center">
 
 **Gear System Architecture**:
 - **Speed Reduction**: 25:25 ratio through custom spur gear design
@@ -390,20 +392,17 @@ The custom 2-gear differential ensures smooth torque distribution during turning
 
 | Component | File Reference | Quantity | Visual Reference | Functional Description |
 |-----------|----------------|----------|------------------|------------------------|
-| **Main Chassis** | [`design_base.3mf`](models/design_base.3mf) | 1 | <img src="models/CAD_design_base_1.jpg" width="80"><img src="models/CAD_design_base_2.jpg" width="80"> | Primary structural element with integrated mounting features |
-| **4-Gear Differential** | [`design_4_gear_mini_differential.3mf`](models/design_4_gear_mini_differential.3mf) | 1 | <img src="models/CAD_design_4_gear_mini_differential_1.jpg" width="80"><img src="models/CAD_design_4_gear_mini_differential_2.jpg" width="80"> | Complete differential assembly with integrated gear mounting |
-| **Front Rim Assembly** | [`design_front_rim_bearing.3mf`](models/design_front_rim_bearing.3mf) | 2 | <img src="models/CAD_design_front_rim_bearing_1.jpg" width="80"><img src="models/CAD_design_front_rim_bearing_2.jpg" width="80"> | Steering wheels with integrated bearing seats |
-| **Steering Arm** | [`design_steering_arm.3mf`](models/design_steering_arm.3mf) | 2 | <img src="models/CAD_design_steering_arm_1.jpg" width="80"><img src="models/CAD_design_steering_arm_2.jpg" width="80"> | Ackermann steering linkage arms (left/right pair) |
-| **Steering Linkage** | [`design_steering_linkage.3mf`](models/design_steering_linkage.3mf) | 1 | <img src="models/CAD_design_steering_linkage.jpg" width="80"> | Central steering connection mechanism |
-| **25T Spur Gear** | [`design_spur_25_gear.3mf`](models/design_spur_25_gear.3mf) | 1 | <img src="models/CAD_design_spur_25_gear_1.jpg" width="80"><img src="models/CAD_design_spur_25_gear_2.jpg" width="80"> | 25-tooth torque transmission gear |
-| **26T Spur Gear** | [`design_spur_26_gear.3mf`](models/design_spur_26_gear.3mf) | 1 | <img src="models/CAD_design_spur_26_gear_1.jpg" width="80"><img src="models/CAD_design_spur_26_gear_2.jpg" width="80"> | 26-tooth motor interface gear |
-| **12T Bevel Gear** | [`design_bevel_12_gear.3mf`](models/design_bevel_12_gear.3mf) | 4 | <img src="models/CAD_design_bevel_12_gear_1.jpg" width="80"><img src="models/CAD_design_bevel_12_gear_2.jpg" width="80"> | Differential bevel gears (set of 4 required) |
-| **Motor Enclosure** | [`design_motor_lid.3mf`](models/design_motor_lid.3mf) | 1 | <img src="models/CAD_design_motor_lid.jpg" width="80"> | N20 motor protective housing |
-| **Long Rear Rim** | [`design_back_rim_long.3mf`](models/design_back_rim_long.3mf) | 1 | <img src="models/CAD_design_back_rim_long.jpg" width="80"> | Extended right-side drive wheel |
-| **Short Rear Rim** | [`design_back_rim_short.3mf`](models/design_back_rim_short.3mf) | 1 | <img src="models/CAD_design_back_rim_short.jpg" width="80"> | Compact left-side drive wheel |
-| **Front Upper Cover** | [`design_front_top_cover.3mf`](models/design_front_top_cover.3mf) | 1 | <img src="models/CAD_design_front_top_cover_1.jpg" width="80"><img src="models/CAD_design_front_top_cover_2.jpg" width="80"> | Electronics protection shield |
-| **Front Lower Cover** | [`design_front_bottom_cover.3mf`](models/design_front_bottom_cover.3mf) | 1 | <img src="models/CAD_design_front_bottom_cover.jpg" width="80"> | Underbody protection panel |
-| **Button Interface** | [`design_button_cap.3mf`](models/design_button_cap.3mf) | 1 | <img src="models/CAD_design_button_cap_1.jpg" width="80"><img src="models/CAD_design_button_cap_2.jpg" width="80"> | User interface button cap |
+| **Main Chassis** | [`RCBC Chassis.3MF`](Mechanical_Design/RCBC%20Chassis.3MF) | 1 | <img src="Mechanical_Design/Chassis.png" width="80"><img src="Mechanical_Design/Chassi%20Side%20View.png" width="80"> | Primary structural element with integrated mounting features |
+| **Motor Bracket** | [`JGA25-370 motor bracket.step.3MF`](Mechanical_Design/JGA25-370%20motor%20bracket.step.3MF) | 1 | <img src="Mechanical_Design/Motor%20Bracket.png" width="80"> | Mounting bracket specifically designed for JGA25-370 motor |
+| **Ackerman Axle** | [`Ackerman Axle.3MF`](Mechanical_Design/Ackerman%20Axle.3MF) | 1 | <img src="Mechanical_Design/Ackerman%20Axle.png" width="80"> | Main steering linkage for Ackermann geometry |
+| **Knuckle Joint** | [`Knuckle_Joint_boze.3MF`](Mechanical_Design/Knuckle_Joint_boze.3MF) | 2 | <img src="Mechanical_Design/Boze.png" width="80"> | Steering knuckle joints for front wheels |
+| **Rotation Left** | [`Rotation_Left.3MF`](Mechanical_Design/Rotation_Left.3MF) | 1 | <img src="Mechanical_Design/Left%20Rotation.png" width="80"> | Left side steering rotation component |
+| **Rotation Right**| [`Rotation_Right.3MF`](Mechanical_Design/Rotation_Right.3MF) | 1 | <img src="Mechanical_Design/Right%20Rotation.png" width="80"> | Right side steering rotation component |
+| **Servo Connector** | [`Servo_Connector.3MF`](Mechanical_Design/Servo_Connector.3MF) | 1 | <img src="Mechanical_Design/Servo%20Connector.png" width="80"><img src="Mechanical_Design/Right%20Connector.png" width="80"> | Linkage connecting the steering servo to the axle |
+| **Spur Gear** | [`spur gear_am.3MF`](Mechanical_Design/spur%20gear_am.3MF) | 1 | <img src="Mechanical_Design/Motor_Spur_gear.png" width="80"><img src="Mechanical_Design/Shaft_Spur_Gear.png" width="80"> | Main torque transmission spur gear |
+| **Drive Shaft** | [`Shaft.3MF`](Mechanical_Design/Shaft.3MF) | 1 | <img src="Mechanical_Design/Shaft.png" width="80"> | Main mechanical drive transmission shaft |
+| **Camera Casing** | [`camera casing 1.3MF`](Mechanical_Design/camera%20casing%201.3MF) | 1 | <img src="Mechanical_Design/Camera%20Casing.png" width="80"><img src="Mechanical_Design/Front%20View%20With%20The%20Camera%20.png" width="80"> | Enclosure and protection for the vision system |
+| **Rear Spoiler** | [`spoiler.3MF`](Mechanical_Design/spoiler.3MF) | 1 | <img src="Mechanical_Design/Spoiler.png" width="80"> | Aerodynamic rear spoiler structure |
 
 </div>
 
@@ -423,8 +422,10 @@ The custom 2-gear differential ensures smooth torque distribution during turning
 
 ### **Assembly Methodology**
 
+</div>
+
 <div align="center">
-<img src="models/building_steps.jpg" alt="Assembly Process Documentation" width="600">
+<img src="Mechanical_Design/Integration%20Parts.jpeg" alt="Assembly Process Documentation" width="600">
 </div>
 <p align="center">
   <em>Staged assembly approach ensuring proper system integration and alignment</em>
