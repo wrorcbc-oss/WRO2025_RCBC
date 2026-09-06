@@ -121,34 +121,37 @@ Team RCBC includes passionate students from EGYPT, guided by a coach. This is ou
 <img src="t-photos/workplace.jpg" alt="Team RCBC at Work" width="600">
 </div>
 
-### **Members**
-- **Yossef Hossam** (Team Leader)  
+### Members
+
+* **Yossef Hossam** (Team Leader)  
   *Role*: Electronics, Mechanical Design, Software, Strategy Integration  
-  *Background*: High School Student, Stem October High School For Boys (S28)
-  *Contact*: [YossefHossam1230@gmail.com](YossefHossam1230@gmail.com), [Youssef1025130@stemoctober.moe.edu.eg](mailto:Youssef1025130@stemoctober.moe.edu.eg)  
+  *Background*: High School Student, STEM October High School For Boys (S28)  
+  *Contact*: [YossefHossam1230@gmail.com](mailto:YossefHossam1230@gmail.com), [Youssef1025130@stemoctober.moe.edu.eg](mailto:Youssef1025130@stemoctober.moe.edu.eg)  
   *Born*: 2009, Egypt
 
-- **Mahmoud Atef**  
+* **Mahmoud Atef**  
   *Role*: Computer Vision Research, Strategy  
-  *Background*: High School Student, Stem October High School For Boys (S28)
+  *Background*: High School Student, STEM October High School For Boys (S28)  
   *Born*: 2010, Egypt
 
-  - **Hamza Mahmoud**   
-  *Role*: Electronics, Software, 
-  *Background*: High School Student, Stem October High School For Boys (S28)  
+* **Hamza Mahmoud**  
+  *Role*: Electronics, Software  
+  *Background*: High School Student, STEM October High School For Boys (S28)  
   *Contact*: [atakan@atakanersoy.com](mailto:atakan@atakanersoy.com), [aersoy24@ku.edu.tr](mailto:aersoy24@ku.edu.tr)  
   *Born*: 2009, EGYPT
 
-### **Coach**
-- **Manar**  
-  *Role*: Team Coach, Connector  
-  *Background*: Graduated, Computer and Informatics Science, Ain Shams University 
-  *Born*: 2000, EGYPT  
-<br>
-<div align="center">
-<img src="t-photos/team_fun.jpg" alt="Team RCBC Fun Photo" width="600">
-</div>
+### Coach
 
+* **Manar**  
+  *Role*: Team Coach, Connector  
+  *Background*: Graduated, Computer and Informatics Science, Ain Shams University  
+  *Born*: 2000, EGYPT
+
+<br>
+
+<div align="center">
+  <img src="t-photos/team_fun.jpg" alt="Team RCBC Fun Photo" width="600">
+</div>
 
 ### **Team Journey Moments**
 Throughout our development process from initial concept to competition readiness, we captured key moments demonstrating our collaborative spirit and technical dedication. These images showcase our brainstorming sessions, technical adjustments, and competition preparation.
