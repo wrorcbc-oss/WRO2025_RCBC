@@ -2,7 +2,9 @@
 # 🚀 WRO 2026 Future Engineers – RCBC
 
 <center>
-<img src="other/transparent_only_logo_WRO2025_FE_ANTi_logo_05-05-2025.png" alt="Banner" width="600">
+<p align="center">
+  <img src="Others/Team%20Logo.png" alt="Team Logo" width="600">
+</p>
 
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/anti.wro/)
 [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/@WRO_RCBC_EGYPT)
