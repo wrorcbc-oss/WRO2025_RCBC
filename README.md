@@ -47,8 +47,7 @@ Current best times on the 3 m x 3 m field:
 ### **Each folder contains comprehensive README documentation with specialized technical content**
 
 | 📁 Folder | 🎯 Technical Content | 📖 Detailed Documentation |
-|-----------|----------------------|---------------------------|
-| **🧮 MATLAB** | **Vision System Calibration**<br>• LAB colorspace analysis<br>• Threshold optimization<br>• Lighting condition testing | [🔗 Explore MATLAB Documentation](matlab/README.md) |
+|-----------|----------------------|---------------------------||
 | **⚙ Mechanical_Design** | **Mechanical Engineering**<br>• 3D CAD designs<br>• Assembly instructions<br>• Gear system calculations | [🔗 Explore 3D Models & Assembly Documentation](models/README.md) |
 | **🔌 Schemes** | **Electrical Systems**<br>• Wiring diagrams<br>• Power management<br>• Component schematics & datasheets | [🔗 Explore Schematics & Wiring Documentation](schemes/README.md) |
 | **💾 Software** | **Software Algorithms**<br>• Navigation logic<br>• Sensor fusion<br>• Control systems | [🔗 Explore Software & Algorithms Documentation](src/README.md) |
