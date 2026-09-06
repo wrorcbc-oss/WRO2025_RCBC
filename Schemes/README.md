@@ -1,4 +1,4 @@
-# ⚡ Schemes & Hardware Documentation
+[# ⚡ Schemes & Hardware Documentation
 
 This folder contains the complete electrical schematics, wiring diagrams, power management documentation, and datasheet references for our WRO Future Engineers autonomous vehicle. The electrical system has been engineered to ensure optimal power distribution, minimal latency, and robust hardware integration.
 
@@ -168,3 +168,4 @@ All critical component specs and electrical ratings are archived locally in this
 This comprehensive electrical and schematic documentation provides complete transparency into our design process, component selection rationale, manufacturing methodology, and problem-solving approaches. Every aspect of our electrical system has been optimized for reliability, maintainability, and performance in the WRO 2026 Future Engineers competition.
 
 **Documentation Completeness**: All schematics, wiring diagrams, component specifications, and implementation details are provided to enable exact replication of our electrical systems. This documentation aims to fulfill the WRO Future Engineers competition requirements for comprehensive engineering documentation through detailed electrical system transparency.
+](https://github.com/wrorcbc-oss/WRO2025_RCBC/edit/main/Schemes/README.md)
