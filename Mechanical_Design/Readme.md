@@ -175,7 +175,7 @@ Selected for superior layer adhesion, impact resistance, and thermal stability r
 ### 📋 Detailed Step-by-Step Assembly Process
 
 <p align="center">
-  <img src="building_steps.jpg" alt="Assembly Process" height="500">
+  <img src="Integration Parts.jpeg" alt="Assembly Process" height="500">
 </p>
 <p align="center">
   <em>Intermediate assembly stage showing mechanical systems integration and component relationships</em>
