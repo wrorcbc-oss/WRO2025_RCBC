@@ -42,8 +42,8 @@ Our custom differential ensures smooth power distribution to both rear wheels du
         <img src="Gear System.png" alt="Physical Differential Test" height="430">
       </td>
       <td align="center">
-        <img src="Gear System.png" alt="CAD Differential View 1" height="213"><br>
-        <img src="Gear System.png" alt="CAD Differential View 2" height="213">
+        <img src="Gear System Picture 2.png" alt="CAD Differential View 1" height="213"><br>
+        <img src="Gear System Picture 3.png" alt="CAD Differential View 2" height="213">
       </td>
     </tr>
   </table>
@@ -193,7 +193,7 @@ Selected for superior layer adhesion, impact resistance, and thermal stability r
 ## 🔄 Component Development & Engineering Iteration
 
 <p align="center">
-  <img src="parts_development.jpg" alt="Component Development" height="550">
+  <img src="Gears.jpeg" alt="Component Development" height="550">
 </p>
 <p align="center">
   <em>Comprehensive component evolution demonstrating our iterative design process across gear systems, steering mechanisms, and structural elements</em>
