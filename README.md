@@ -141,7 +141,7 @@ Team RPRC includes passionate students from EGYPT, guided by a coach. This is ou
   
 <br>
 <div align="center">
-  <img src="t-photos/team_fun.jpg" alt="Team RCBC Fun Photo" width="600">
+  <img src="Team_Photos/During_Work.jpeg" alt="Team RCBC Fun Photo" width="600">
 </div>
 
 ### **Team Journey Moments**
