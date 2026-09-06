@@ -7,7 +7,6 @@ This folder contains the complete 3D CAD models and manufacturing files for Team
 Our design philosophy centered around **Relliability and Percision** - achieving the best possible footprint while ensuring robust mechanical performance. 
 <p align="center">
   <img src="Final Car Design.png" alt="CAD Isometric View" height="350">
-  <img src="IRL_isometric_view.jpg" alt="Real Life Isometric View" height="350">
 </p>
   <em>Direct comparison: 1) CAD design visualization 
 </p>
