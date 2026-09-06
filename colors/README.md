@@ -1,6 +1,6 @@
 # Color Detection & Calibration Documentation
 
-This folder contains the standalone Python/OpenCV tools Team ANTi uses to develop and calibrate the color-detection logic before it is integrated into the robot's main navigation software. This documentation was last updated on **[ضع التاريخ هنا]**.
+This folder contains the standalone Python/OpenCV tools Team ANTi uses to develop and calibrate the color-detection logic before it is integrated into the robot's main navigation software. This documentation was last updated on **[september]**.
 
 ## 🎯 Purpose of This Folder
 
