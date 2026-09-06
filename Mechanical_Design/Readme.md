@@ -155,8 +155,8 @@ Selected for superior layer adhesion, impact resistance, and thermal stability r
 - **Travel & Overhangs**: Travel speed 500 mm/s, Overhang reduction 30-20-10%
 - **Bridge Control**: External bridges 25 mm/s, Internal bridges 160 mm/s
 
-### 📁 STL File Format Advantage
-**Why STL for Maximum Reproducibility:**
+### 📁 3amf File Format Advantage
+**Why 3amf for Maximum Reproducibility:**
 - **Universal Compatibility**: Works across all printer brands and slicing software, unlike machine-specific G-code
 - **Complete Scene Preservation**: All print settings, orientations, and arrangements embedded
 - **Advanced Feature Support**: Custom support placements, support settings, and manual modifications preserved
@@ -213,10 +213,10 @@ Selected for superior layer adhesion, impact resistance, and thermal stability r
 <p align="center">
   <table align="center">
     <tr>
-      <td align="center">
-        <img src="your_tire_image.jpg" alt="RC On-Road Tire Specifications" height="350">
+      <td align="center" width="40%">
+        <img src="Tire.png" alt="RC On-Road Tire Specifications" width="100%">
       </td>
-      <td align="left">
+      <td align="left" width="60%">
         <h4>🏎️ Why On-Road Performance Tires?</h4>
         <ul>
           <li><strong>Low-Profile Tread:</strong> Designed for high-speed stability and maximum traction on smooth surfaces.</li>
