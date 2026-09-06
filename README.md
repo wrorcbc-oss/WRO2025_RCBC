@@ -46,8 +46,8 @@ Current best times on the 3 m x 3 m field:
 
 ### **Each folder contains comprehensive README documentation with specialized technical content**
 
-| 📁 Folder | 🎯 Technical Content | 📖 Detailed Documentation |
-|-----------|----------------------|---------------------------||
+|| 📁 Folder | 🎯 Technical Content | 📖 Detailed Documentation |
+|-----------|----------------------|---------------------------|
 | **⚙ Mechanical_Design** | **Mechanical Engineering**<br>• 3D CAD designs<br>• Assembly instructions<br>• Gear system calculations | [🔗 Explore 3D Models & Assembly Documentation](models/README.md) |
 | **🔌 Schemes** | **Electrical Systems**<br>• Wiring diagrams<br>• Power management<br>• Component schematics & datasheets | [🔗 Explore Schematics & Wiring Documentation](schemes/README.md) |
 | **💾 Software** | **Software Algorithms**<br>• Navigation logic<br>• Sensor fusion<br>• Control systems | [🔗 Explore Software & Algorithms Documentation](src/README.md) |
@@ -55,7 +55,6 @@ Current best times on the 3 m x 3 m field:
 | **🚗 Vehicle Photos** | **Vehicle Documentation**<br>• Multi-angle views<br>• Component labeling<br>• System integration | [🔗 Explore Vehicle Photos Documentation](v-photos/README.md) |
 | **🎥 Videos** | **Performance Validation**<br>• Challenge demonstrations<br>• Engineering tests<br>• System validation | [🔗 Explore Performance Videos Documentation](video/README.md) |
 | **📚 Other Resources** | **Technical References**<br>• Component images<br>• Development resources<br>• Additional documentation | [🔗 Explore Additional Resources Documentation](other/README.md) |
-
 </div>
 
 ---
