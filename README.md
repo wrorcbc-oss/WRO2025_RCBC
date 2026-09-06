@@ -265,13 +265,12 @@ Our electronic architecture emphasizes modularity, reliability, and hands-on eng
 
 | Component | Image | Quantity | Function | Key Specifications |
 |-----------|-------|----------|----------|-------------------|
-| **Raspberry Pi 4 Model B (4GB)** | <img width="150" alt="image" src="https://github.com/user-attachments/assets/3615940c-df78-42af-b8ce-07dddc0f563a" /> | 1 | Main Processing & Vision | Quad-core Cortex-A72, 4GB RAM, Peripheral & Camera Interface |
-| **Raspberry Pi Camera Module 2 (8MP)** | <img width="150" alt="image" src="https://github.com/user-attachments/assets/10418180-6c80-4b07-a8bd-66003c9ab83e" /> | 1 | Visual Navigation | 8MP Sony IMX219 sensor, 1080p video, CSI interface |
-| **HC-SR04 Ultrasonic Sensor** | <img src="other/hc_sr04.jpg" width="150"> | 2 | Distance & Obstacle Detection | 2cm to 400cm range, 15-degree measurement angle |
-| **MG966R Servo Motor** | <img src="other/mg966r.jpg" width="150"> | 1 | Steering Actuation | High-torque metal gear servo, 180° rotation |
-| **L298N Motor Driver** | <img src="other/l298n.jpg" width="150"> | 1 | Motor Control | Dual H-bridge driver, up to 2A current per channel |
-| **LiPo Battery Pack** | <img src="other/lipo_battery.jpg" width="150"> | 1 | Power Source | High-capacity rechargeable lithium polymer power supply |
-</div>
+| **Raspberry Pi 4 Model B (4GB)** | <img src="Others/Rasppery%20Pi%204%20Model%20B.png" width="150" alt="Raspberry Pi 4"> | 1 | Main Processing & Vision | Quad-core Cortex-A72, 4GB RAM, Peripheral & Camera Interface |
+| **Raspberry Pi Camera Module 2 (8MP)** | <img src="Others/Camera_Module.png" width="150" alt="Camera Module"> | 1 | Visual Navigation | 8MP Sony IMX219 sensor, 1080p video, CSI interface |
+| **HC-SR04 Ultrasonic Sensor** | <img src="Others/Ultrasoni_Sensor.png" width="150" alt="Ultrasonic Sensor"> | 2 | Distance & Obstacle Detection | 2cm to 400cm range, 15-degree measurement angle |
+| **MG966R Servo Motor** | <img src="Others/Mg966R%20Servo%20Motor.png" width="150" alt="Servo Motor"> | 1 | Steering Actuation | High-torque metal gear servo, 180° rotation |
+| **L298N Motor Driver** | <img src="Others/Motor.png" width="150" alt="Motor Driver"> | 1 | Motor Control | Dual H-bridge driver, up to 2A current per channel |
+| **LiPo Battery Pack** | <img src="Others/Batteries.png" width="150" alt="LiPo Battery"> | 1 | Power Source | High-capacity rechargeable lithium polymer power supply |
 
 **Component Selection Philosophy**: We prioritize widely available, well-documented components to ensure reproducibility. All parts can be sourced through standard electronics distributors using the provided specifications and images.
 
@@ -291,14 +290,16 @@ Our electronic architecture emphasizes modularity, reliability, and hands-on eng
 
 <div align="center">
 
+<div align="center">
+
 | Component Schematic | Description | Full Documentation |
 |---------------------|-------------|-------------------|
-| <img src="schemes/rpi_wiring_scheme.jpg" height="150"> | **Raspberry Pi 4 Connection System**<br>GPIO interface, power distribution, and camera CSI connection | [View Details](schemes/README.md#microcontroller-systems) |
-| <img src="schemes/driver_scheme.jpg" height="150"> | **L298N Motor Driver Control**<br>PWM motor regulation and dual H-bridge connections | [View Details](schemes/README.md#motor-control-systems) |
-| <img src="schemes/servo_scheme.jpg" height="150"> | **MG966R Servo Control**<br>Steering mechanism PWM signal mapping | [View Details](schemes/README.md#motor-control-systems) |
-| <img src="schemes/ultrasonic_scheme.jpg" height="150"> | **HC-SR04 Ultrasonic Sensor Network**<br>Trigger and echo pin integration for distance measurement | [View Details](schemes/README.md#sensor-systems) |
-| <img src="schemes/charger_power_management_scheme.jpg" height="150"> | **Power Management & Distribution**<br>LiPo battery charging and main power regulation | [View Details](schemes/README.md#power-management-components) |
-| <img src="schemes/button_scheme.jpg" height="150"> | **User Interface & Control**<br>Start push button and tactile system interface | [View Details](schemes/README.md#-interface--control-systems) |
+| <img src="schemes/rpi_wiring_scheme.jpg" height="150" alt="Raspberry Pi Wiring"> | **Raspberry Pi 4 Connection System**<br>GPIO interface, power distribution, and camera CSI connection | [View Details](schemes/README.md#microcontroller-systems) |
+| <img src="schemes/driver_scheme.jpg" height="150" alt="Driver Scheme"> | **L298N Motor Driver Control**<br>PWM motor regulation and dual H-bridge connections | [View Details](schemes/README.md#motor-control-systems) |
+| <img src="schemes/servo_scheme.jpg" height="150" alt="Servo Scheme"> | **MG966R Servo Control**<br>Steering mechanism PWM signal mapping | [View Details](schemes/README.md#motor-control-systems) |
+| <img src="schemes/ultrasonic_scheme.jpg" height="150" alt="Ultrasonic Scheme"> | **HC-SR04 Ultrasonic Sensor Network**<br>Trigger and echo pin integration for distance measurement | [View Details](schemes/README.md#sensor-systems) |
+| <img src="schemes/charger_power_management_scheme.jpg" height="150" alt="Power Scheme"> | **Power Management & Distribution**<br>LiPo battery charging and main power regulation | [View Details](schemes/README.md#power-management-components) |
+| <img src="schemes/button_scheme.jpg" height="150" alt="Button Scheme"> | **User Interface & Control**<br>Start push button and tactile system interface | [View Details](schemes/README.md#-interface--control-systems) |
 </div>
 
 ### **Power Management Innovation**
@@ -311,8 +312,8 @@ During system integration, we identified a critical design limitation in our cho
 * **Implementation**: Rerouted the main input rails through the primary hardware switch to ensure complete circuit isolation when deactivated.
 * **Validation**: Full power cut-off achieved with zero standby current draw, protecting the Raspberry Pi and motor drivers from unwanted power leakage.
 <div align="center">
-<img src="schemes/switch_fix.jpg" alt="Power Management Modification" width="600">
-<p><em>Hardware modification enabling complete power rail control through single switch</em></p>
+  <img src="schemes/switch_fix.jpg" alt="Power Management Modification" width="600">
+  <p><em>Hardware modification enabling complete power rail control through single switch</em></p>
 </div>
 
 ### **Signal Integrity Systems**
