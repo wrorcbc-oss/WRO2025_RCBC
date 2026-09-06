@@ -66,11 +66,11 @@ The main chassis integrates all mechanical and electronic systems while maintain
   <table align="center">
     <tr>
       <td align="center">
-        <img src="main_base_development.jpg" alt="Chassis Development" height="430">
+        <img src="RCBC's Chassis.jpg" alt="Chassis Development" height="430">
       </td>
       <td align="center">
-        <img src="CAD_design_base_1.jpg" alt="CAD base View 1" height="213"><br>
-        <img src="CAD_design_base_2.jpg" alt="CAD base View 2" height="213">
+        <img src="Final View Of The Chassis.png" alt="CAD base View 1" height="213"><br>
+        <img src="RCBC's Top View .png" alt="CAD base View 2" height="213">
       </td>
     </tr>
   </table>
@@ -211,11 +211,21 @@ Selected for superior layer adhesion, impact resistance, and thermal stability r
 ### 🔍 Comprehensive Tire Analysis & Performance-Based Selection
 
 <p align="center">
-  <img src="../other/lego87697_wheel_comparison.jpg" alt="LEGO Wheel Analysis" height="350">
-  <img src="silicone_tire_test.jpg" alt="Silicone Tire Testing" height="350">
-</p>
-<p align="center">
-  <em>1) Detailed LEGO wheel variant analysis showing design differences • 2) Silicone vs LEGO tire performance comparison testing</em>
+  <table align="center">
+    <tr>
+      <td align="center">
+        <img src="your_tire_image.jpg" alt="RC On-Road Tire Specifications" height="350">
+      </td>
+      <td align="left">
+        <h4>🏎️ Why On-Road Performance Tires?</h4>
+        <ul>
+          <li><strong>Low-Profile Tread:</strong> Designed for high-speed stability and maximum traction on smooth surfaces.</li>
+          <li><strong>Aluminium Rim Structure:</strong> Provides zero flex under high torque compared to flexible plastic wheels.</li>
+          <li><strong>Standard Hex Hub:</strong> Ensures precise power transfer from motors without rotational slip.</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
 </p>
 
 **Technical Tire Comparison & Engineering Analysis:**
