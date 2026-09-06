@@ -120,15 +120,16 @@ Team RCBC includes passionate students from EGYPT, guided by a coach. This is ou
 - **Yossef Hossam** (Team Leader)  
   *Role*: Electronics, Mechanical Design, Software, Strategy Integration  
   *Background*: High School Student, STEM October High School For Boys (S28)  
-  *Contact*: [YossefHossam1230@gmail.com](mailto:YossefHossam1230@gmail.com), [Youssef1025130@stemoctober.moe.edu.eg](mailto:Youssef1025130@stemoctober.moe.edu.eg)  
+  *Contact*: [YossefHossam1230@gmail.com](mailto:YossefHossam1230@gmail.com), [Youssef1025130@stemoctober.moe.edu.eg](mailto:Youssef1025130@stemoctober.moe.edu.eg)
   *Born*: 2009, Egypt
   
 - **Mahmoud Atef**  
   *Role*: Computer Vision Research, Strategy  
   *Background*: High School Student, STEM October High School For Boys (S28)  
   *Born*: 2010, Egypt
-- **Hamza Mahmoud**
+  *Contact* [mahmoudatef12534@gmail.com](mailto:mahmoudatef12534@gmail.com), [mahmoud.1025119@stemoctober.moe.edu.eg](mailto:mahmoud.1025119@stemoctober.moe.edu.eg)  
   
+- **Hamza Mahmoud**
   *Role*: Electronics, Software  
   *Background*: High School Student, STEM October High School For Boys (S28)  
   *Contact*: [atakan@atakanersoy.com](mailto:atakan@atakanersoy.com), [aersoy24@ku.edu.tr](mailto:aersoy24@ku.edu.tr)  
@@ -245,7 +246,7 @@ Our platform represents a breakthrough in high-performance autonomous vehicle de
 Complete vehicle documentation with detailed component identification available in [vehicle photos](v-photos/README.md).
 
 <div align="center">
-<img src="models/design_to_life.jpg" alt="Digital to Physical Realization" width="600">
+  <img src="Car_Photos/While_Working.jpeg" alt="Digital to Physical Realization" width="600">
 </div>
 
 ### Potential Future Improvements (Overall Vehicle)
