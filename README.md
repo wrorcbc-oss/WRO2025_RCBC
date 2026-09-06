@@ -1,5 +1,5 @@
-# WRO2026_RCBC
-# 🚀 WRO 2026 Future Engineers – RCBC
+# WRO2026_RPRC
+# 🚀 WRO 2026 Future Engineers – RPRC
 
 <center>
 <p align="center">
@@ -13,7 +13,7 @@
 
 ## **EGPYTIAN NATIONAL TEAM **
 
-Welcome to the GitHub repository of Team RCBC, competing in the World Robot Olympiad™ (WRO®) Future Engineers 2025 category. Our team is made up of Egyptian students who have designed a compact, innovative, and autonomous self-driving vehicle to tackle the dynamic challenges of the WRO 2025 competition. Our team name, RCBC—which stands for Reliable Chassis, Brilliant Code—reflects our core philosophy: achieving perfect harmony between mechanical durability and highly intelligent software. This name signifies our competitive spirit, blending robust engineering with cutting-edge algorithms to push the boundaries of autonomous design.
+Welcome to the GitHub repository of Team RPRC, competing in the World Robot Olympiad™ (WRO®) Future Engineers 2025 category. Our team is made up of Egyptian students who have designed a compact, innovative, and autonomous self-driving vehicle to tackle the dynamic challenges of the WRO 2025 competition. Our team name, RPRC—which stands for Reliable Chassis, Brilliant Code—reflects our core philosophy: achieving perfect harmony between mechanical durability and highly intelligent software. This name signifies our competitive spirit, blending robust engineering with cutting-edge algorithms to push the boundaries of autonomous design.
 
 Our mission was to engineer a highly precise and exceptionally fast autonomous vehicle for the WRO 2025 challenge, prioritizing dynamic stability, speed, and flawless execution over extreme miniaturization. Leveraging our expertise in electrical, mechanical, and software engineering, we optimized every component to dominate the 3 m x 3 m game field.
 Current best times on the 3 m x 3 m field:
@@ -113,7 +113,7 @@ Current best times on the 3 m x 3 m field:
 
 ## 👥 **The Team** <a id="the-team"></a>
 
-Team RCBC includes passionate students from EGYPT, guided by a coach. This is our **first year** competing in the WRO Future Engineers category, and each member brings unique skills to the project, from electronics to computer vision.
+Team RPRC includes passionate students from EGYPT, guided by a coach. This is our **first year** competing in the WRO Future Engineers category, and each member brings unique skills to the project, from electronics to computer vision.
 
 ### Members
 - **Yossef Hossam** (Team Leader)  
@@ -131,7 +131,7 @@ Team RCBC includes passionate students from EGYPT, guided by a coach. This is ou
 - **Hamza Mahmoud**
   *Role*: Electronics, Software  
   *Background*: High School Student, STEM October High School For Boys (S28)  
-  *Contact*: [atakan@atakanersoy.com](mailto:atakan@atakanersoy.com), [aersoy24@ku.edu.tr](mailto:aersoy24@ku.edu.tr)  
+  *Contact*: [Hamza.1025140@stemoctober.moe.edu.eg](mailto:Hamza.1025140@stemoctober.moe.edu.eg) 
   *Born*: 2009, EGYPT
 
 ### Coach
@@ -509,7 +509,7 @@ Our software implementation employs a distributed processing architecture that o
 
 </td>
 <td width="40%">
-<img src="src/1788558229643_image.png" alt="Software Development Environment" width="100%">
+<img src="system%20implmention.jpeg" alt="System Implementation" width="100%">
 <p align="center"><em>Integrated development and testing setup</em></p>
 </td>
 </tr>
@@ -555,22 +555,16 @@ We selected the **HSV color space** for its superior performance under variable 
 
 **Calibration Debug Windows**:
 
-<table>
-<tr>
-<td width="50%">
-<img src="src/1788558162827_image.png" alt="Green Mask Calibration" width="100%">
-<p align="center"><em>Green mask calibration window</em></p>
-</td>
-<td width="50%">
-<img src="src/1788558165154_image.png" alt="Red Mask Calibration" width="100%">
-<p align="center"><em>Red mask calibration window</em></p>
-</td>
-</tr>
-</table>
+## 📸 **Testing & Calibration Visuals**
 
 <div align="center">
-<img src="src/hard_light_condition_tests.jpg" alt="Environmental Testing Validation" width="600">
-<p><em>Comprehensive testing under challenging lighting conditions including direct sunlight exposure</em></p>
+  
+### **Detection Code Testing**
+<img src="Testing_The_Detection_code.jpg" alt="Testing The Detection Code" width="80%">
+
+### **Calibration Testing**
+<img src="testing_the_calibration_code%20%282%29.jpg" alt="Testing The Calibration Code" width="80%">
+
 </div>
 
 ### 🧭 **Navigation Algorithm Implementation**
@@ -618,18 +612,14 @@ IF front distance
 - **Green Object Detection**: Left-side bias navigation with maintained offset  
 - **Position Maintenance**: Consistent pixel positioning for smooth obstacle tracking
 
-<table>
-<tr>
-<td width="50%">
-<img src="src/1788558167694_image.png" alt="Red Obstacle Detection Example" width="100%">
-<p align="center"><em>Live red obstacle detection with bounding box</em></p>
-</td>
-<td width="50%">
-<img src="src/1788558170273_image.png" alt="Green Obstacle Detection Example" width="100%">
-<p align="center"><em>Live green obstacle detection during track navigation</em></p>
-</td>
-</tr>
-</table>
+## 📸 **Testing & Calibration Visuals**
+
+<div align="center">
+  
+### **Red Color Detection**
+<img src="Testing_The_Red_Detection.jpg" alt="Testing The Red Detection" width="80%">
+
+</div>
 
 ### **Sensor and motor Fusion Implementation**
 
@@ -637,10 +627,11 @@ IF front distance
 ```
 esp32 Sensors ←→  UART  ←→ Raspberry Pi 4 Model B → Sensor Fusion → Control Decisions
      ↑                            ↑                   ↑               ↓
-  ToF Left                      Camera           PID Controller   Motor/Servo
-  ToF Right                     Vision           State Machine     Actuators
- Encoder Data                  IMU Data
-                               ToF Front
+  Ultrasonic Left               Camera           PID Controller   Motor/Servo
+  Ultrasonic Right              Vision           State Machine     Actuators
+  Ultrasonic Front                                                                                                    
+   Encoder Data               
+                               
 ```
 
 ### **Control System Implementation**
@@ -669,21 +660,13 @@ def calculate_steering_correction(target_cx, frame_center_x):
 - `N` - No obstacle currently detected
 **Slave Response Formats**:
 - **All sensors**: `left_distance,right_distance,encoder_distance\n`
-- **Left ToF only**: `left_distance\n`
-- **Right ToF only**: `right_distance\n`
+- **Left Ultrasonic only**: `left_distance\n`
+- **Right Ultrasonic only**: `right_distance\n`
 - **Encoder only**: `encoder_distance\n`
 
 ### **Parking Maneuver Analysis**
 
 Our compact dimensions required innovative parking strategies to operate within the constrained parking space.
-
-<div align="center">
-<img src="src/parking_cube_strategy.jpg" alt="Complex Parking Scenario" height="375">
-<img src="src/parking_cubeless_strategy.jpg" alt="Simplified Parking Approach" height="375">
-</div>
-<p align="center">
-  <em>Parking strategy analysis for different final obstacle configurations</em>
-</p>
 
 ### **Parallel Parking Strategy Optimization**
 
@@ -700,7 +683,7 @@ Our compact dimensions required innovative parking strategies to operate within 
 
 
 ### Parallel Parking – Potential Improvements
-- Pure vision-based parking using parking walls as obstacles → eliminates ToF distance dependency and works even if the parking zone is shifted elsewhere.
+- Pure vision-based parking using parking walls as obstacles → eliminates Ultrassonic distance dependency and works even if the parking zone is shifted elsewhere.
 - Single-motion slow parking trajectory instead of safer fast three-segment → would save ~1.5 s .
 
 ### **Obstacle Navigation Patterns**
@@ -724,8 +707,9 @@ The algorithm handles all possible obstacle combinations through systematic patt
 5. **Error Calculation**: Position deviation from desired tracking point
 
 <div align="center">
-<img src="src/example_detection.jpg" alt="Single Color Detection" style="width:80%;">
-<img src="src/example_all_detection.jpg" alt="Multi-Color Detection" style="width:80%;">
+<img src="Testing_The_Detection_code.jpg" alt="Single Color Detection" style="width:80%;">
+<br><br>
+<img src="Testing_The_Red_Detection.jpg" alt="Red Color Detection" style="width:80%;">
 </div>
 
 ### **Software & Algorithms – Potential Improvements**
@@ -734,7 +718,7 @@ The algorithm handles all possible obstacle combinations through systematic patt
 - Auto-calibrate HSV thresholds at startup using a reference color card, reducing the need for manual venue-specific tuning of the lane/red/green masks.
 - Enable bidirectional UART communication → let the ESP32 report back sensor data (front/left/right distances) to the Raspberry Pi, allowing more informed vision-based decisions instead of one-way commands.
 
-Complete software implementation details available in our [source code documentation](src/README.md).
+Complete software implementation details available in our [source code documentation](software/README.md).
 
 ---
 
@@ -878,14 +862,13 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 </div>
 
-- **For mechanical design and 3D models**: * [Models Documentation](https://github.com/wrorcbc-oss/WRO2025_RCBC/tree/main/Mechanical_Design)
+- **For mechanical design and 3D models**: * [Models Documentation](Mechanical_Design/README.md)  
 - **For electrical schematics and wiring**: [Schemes Documentation](schemes/README.md)  
-- **For software implementation and algorithms**: [Software Documentation](src/README.md)  
-- **For competition performance videos**: [Video Documentation](video/README.md)  
-- **For additional resources and photos**: [Other Documentation](other/README.md)
-- **For MATLAB vision tools**: [MATLAB Documentation](matlab/README.md)
-- **For team information**: [Team Photos Documentation](t-photos/README.md)
-- **For vehicle documentation**: [Vehicle Photos Documentation](v-photos/README.md)
+- **For software implementation and algorithms**: [Software Documentation](software/README.md)  
+- **For competition performance videos**: [Video Documentation](Videos/README.md)  
+- **For additional resources and photos**: [Other Documentation](Others/README.md)
+- **For team information**: [Team Photos Documentation](Team_Photos/README.md)
+- **For vehicle documentation**: [Car Photos Documentation](Car_Photos/README.md)
 
 ---
 
@@ -893,10 +876,10 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 ## 🎯 **Prepared for national Competition Excellence**
 
-**Team RCBC - *Never Stop Developing Unless We Stop Learning***
+**Team RPRC - *Never Stop Developing Unless We Stop Learning***
 
 ### **Comprehensive documentation enabling easy replication and future development**
 
-[![YouTube](https://img.shields.io/badge/Watch%20Performance%20Videos-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@solipsy.)
+[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/@WRO_RCBC_EGYPT)
 
 </div>
