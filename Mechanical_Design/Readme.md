@@ -39,15 +39,16 @@ Our custom differential ensures smooth power distribution to both rear wheels du
   <table align="center">
     <tr>
       <td align="center">
-        <img src="differential_test.gif" alt="Physical Differential Test" height="430">
+        <img src="Gear System.png" alt="Physical Differential Test" height="430">
       </td>
       <td align="center">
-        <img src="CAD_design_4_gear_mini_differential_1.jpg" alt="CAD Differential View 1" height="213"><br>
-        <img src="CAD_design_4_gear_mini_differential_2.jpg" alt="CAD Differential View 2" height="213">
+        <img src="Gear System.png" alt="CAD Differential View 1" height="213"><br>
+        <img src="Gear System.png" alt="CAD Differential View 2" height="213">
       </td>
     </tr>
   </table>
 </p>
+
 <p align="center">
   <em>1) Physical differential test demonstrating independent wheel rotation • 2) CAD views showing 2-gear differential assembly from multiple angles</em><br>
   <em>Higher quality video: <a href="../video/differential_test.mp4">differential_test.mp4</a></em>
