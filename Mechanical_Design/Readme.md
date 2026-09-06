@@ -266,7 +266,7 @@ Selected for superior layer adhesion, impact resistance, and thermal stability r
 - **Weight Distribution Science**: Strategic mass placement provides inherent stability
 
 **High-Speed Momentum Dominance:**
-- **Physics Reality**: At 1.4 m/s operational speed, momentum overpowers traction benefits
+- **Physics Reality**: At 1.5 m/s operational speed, momentum overpowers traction benefits
 - **Cornering Truth**: Sharp turns rely on precise steering, not tire compound
 - **Performance Data**: Both tires demonstrated identical competition performance
 
@@ -290,7 +290,23 @@ While silicone promised higher friction coefficients, our ultra-lightweight, hig
     - Speed = (2 × π × wheel radius) × (Wheel RPM / 60)
     - Speed = (2 × π × 0.0325) × (450 / 60) ≈ 1.53 m/s
 - **Operational Speed Selection**: 1.4 m/s via PWM control providing optimal stability and control response
-- **Speed Optimization**: Based on comprehensive calculations comparing wheel/tire sizes and motor speeds for the 3m × 3m game field. Development comparisons available at [motor_speed_calculations.jpg](../other/motor_speed_calculations.jpg)
+- **Speed Optimization**: Based on comprehensive calculations comparing wheel/tire sizes and motor speeds for the 3m × 3m game field. Development comparisons available at
+- <p align="center">
+  <table align="center">
+    <tr>
+      <td align="left">
+        <h4>⚡ Speed Calculations (450 RPM Motor & 1:1 Gear Ratio)</h4>
+        <p><strong>Formula:</strong> <code>v = (π × d / 100) × (RPM / 60)</code></p>
+        <ul>
+          <li><strong>Motor Base Speed:</strong> 450 RPM</li>
+          <li><strong>Gear Ratio:</strong> 1:1 → <strong>Wheel Speed:</strong> 450 RPM</li>
+          <li><strong>Wheel Diameter:</strong> 65 mm (6.5 cm)</li>
+          <li><strong>Theoretical Speed:</strong> <strong>1.53 m/s</strong></li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</p>
 
 **Structural & Performance Engineering Validation:**
 - **Motor Torque Analysis**: ~1.25 Nm at 12V providing sufficient force for 800g vehicle mass and acceleration requirements
