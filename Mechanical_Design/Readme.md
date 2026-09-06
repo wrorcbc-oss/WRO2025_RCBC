@@ -18,14 +18,27 @@ This folder contains the complete 3D CAD models and manufacturing files for Team
 The steering system implements true Ackermann principles where each wheel points toward a common center point during turns, minimizing tire scrub and maximizing stability.
 
 <p align="center">
-  <img src="3d_CAD_motion.gif" alt="Ackermann Steering Simulation" height="375">
-  <img src="ackermann_calculations_turning_radius.jpg" alt="Ackermann Geometry Calculations" height="375">
+  <table align="center">
+    <tr>
+      <td align="center">
+        <img src="Ackerman Steering.png" alt="Ackermann Steering Simulation" height="250">
+      </td>
+      <td align="center">
+        <img src="A Look At The Ackerman.png" alt="Ackermann Geometry Calculations" height="250">
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2">
+        <img src="Ackerman Steering.png" alt="Ackermann Mechanism View" height="200">
+      </td>
+    </tr>
+  </table>
 </p>
+
 <p align="center">
   <em>1) Real-time CAD simulation demonstrating steering mechanism operation • 2) Engineering calculations showing Ackermann geometry and optimal turning radius</em><br>
   <em>Higher quality video: <a href="../video/3d_CAD_motion.mp4">3d_CAD_motion.mp4</a></em>
 </p>
-
 **Engineering Progress & Refinement:**
 - **Initial Approach**: Print-in-place Ackermann steering with integrated moving parts
 - **Performance Finding**: Initial excellent tolerance degraded after extensive testing causing wheel wiggle
@@ -94,13 +107,6 @@ We conducted extensive testing across multiple printing technologies on The inte
 - **Design Platform**: ***SolidWorks*** for comprehensive 3D modeling, simulation, and engineering analysis
 - **Slicing Software**: ***UltiMaker Cura*** for optimized print preparation and manufacturing parameter management
 - **Workflow Integration**: Seamless transition from CAD design to manufacturing-ready 3MF files
-
-<p align="center">
-  <img src="3d_printer.jpg" alt="3D Printing Setup" height="500">
-</p>
-<p align="center">
-  <em>Ender 3v3 printer in operation - our primary manufacturing equipment</em>
-</p>
 
 **Printing Equipment Evaluation:**
 | Printer | Technology | Primary Usage | Materials Tested | Key Findings |
