@@ -328,18 +328,17 @@ While silicone promised higher friction coefficients, our ultra-lightweight, hig
 
 | Component | File | Quantity | CAD Preview | Description |
 |-----------|------|----------|-------------|-------------|
-| **Main Chassis** | [`RCBC Chassis.3MF`](Mechanical_Design/RCBC%20Chassis.3MF) | 1 | <img src="Mechanical_Design/Chassis.png" width="100"> | Primary structure with integrated mounting system |
-| **Motor Bracket** | [`JGA25-370 motor bracket.step.3MF`](Mechanical_Design/JGA25-370%20motor%20bracket.step.3MF) | 1 | <img src="Mechanical_Design/Motor%20Bracket.png" width="100"> | Mounting bracket specifically designed for JGA25-370 motor |
-| **Ackerman Axle** | [`Ackerman Axle.3MF`](Mechanical_Design/Ackerman%20Axle.3MF) | 1 | <img src="Mechanical_Design/Ackerman%20Axle.png" width="100"> | Main steering linkage for Ackermann geometry |
-| **Knuckle Joint** | [`Knuckle_Joint_boze.3MF`](Mechanical_Design/Knuckle_Joint_boze.3MF) | 2 | <img src="Mechanical_Design/Boze.png" width="100"> | Steering knuckle joints for front wheels |
-| **Rotation Left** | [`Rotation_Left.3MF`](Mechanical_Design/Rotation_Left.3MF) | 1 | <img src="Mechanical_Design/Left%20Rotation.png" width="100"> | Left side steering rotation component |
-| **Rotation Right**| [`Rotation_Right.3MF`](Mechanical_Design/Rotation_Right.3MF) | 1 | <img src="Mechanical_Design/Right%20Rotation.png" width="100"> | Right side steering rotation component |
-| **Servo Connector** | [`Servo_Connector.3MF`](Mechanical_Design/Servo_Connector.3MF) | 1 | <img src="Mechanical_Design/Servo%20Connector.png" width="100"><img src="Mechanical_Design/Right%20Connector.png" width="100"> | Linkage connecting the steering servo to the axle |
-| **Spur Gear** | [`spur gear_am.3MF`](Mechanical_Design/spur%20gear_am.3MF) | 1 | <img src="Mechanical_Design/Motor_Spur_gear.png" width="100"> | Main torque transmission spur gear |
-| **Drive Shaft** | [`Shaft.3MF`](Mechanical_Design/Shaft.3MF) | 1 | <img src="Mechanical_Design/Shaft.png" width="100"> | Main mechanical drive transmission shaft |
-| **Camera Casing** | [`camera casing 1.3MF`](Mechanical_Design/camera%20casing%201.3MF) | 1 | <img src="Mechanical_Design/Camera%20Casing.png" width="100"> | Enclosure and protection for the vision system |
-| **Rear Spoiler** | [`spoiler.3MF`](Mechanical_Design/spoiler.3MF) | 1 | <img src="Mechanical_Design/Spoiler.png" width="100"> | Aerodynamic rear spoiler structure |
-
+| **Main Chassis** | [`RCBC Chassis.3MF`](RCBC%20Chassis.3MF) | 1 | <img src="Chassis.png" width="100"> | Primary structure with integrated mounting system |
+| **Motor Bracket** | [`JGA25-370 motor bracket.step.3MF`](JGA25-370%20motor%20bracket.step.3MF) | 1 | <img src="Motor%20Bracket.png" width="100"> | Mounting bracket specifically designed for JGA25-370 motor |
+| **Ackerman Axle** | [`Ackerman Axle.3MF`](Ackerman%20Axle.3MF) | 1 | <img src="Ackerman%20Axle.png" width="100"> | Main steering linkage for Ackermann geometry |
+| **Knuckle Joint** | [`Knuckle_Joint_boze.3MF`](Knuckle_Joint_boze.3MF) | 2 | <img src="Boze.png" width="100"> | Steering knuckle joints for front wheels |
+| **Rotation Left** | [`Rotation_Left.3MF`](Rotation_Left.3MF) | 1 | <img src="Left%20Rotation.png" width="100"> | Left side steering rotation component |
+| **Rotation Right**| [`Rotation_Right.3MF`](Rotation_Right.3MF) | 1 | <img src="Right%20Rotation.png" width="100"> | Right side steering rotation component |
+| **Servo Connector** | [`Servo_Connector.3MF`](Servo_Connector.3MF) | 1 | <img src="Servo%20Connector.png" width="100"><img src="Right%20Connector.png" width="100"> | Linkage connecting the steering servo to the axle |
+| **Spur Gear** | [`spur gear_am.3MF`](spur%20gear_am.3MF) | 1 | <img src="Motor_Spur_gear.png" width="100"> | Main torque transmission spur gear |
+| **Drive Shaft** | [`Shaft.3MF`](Shaft.3MF) | 1 | <img src="Shaft.png" width="100"> | Main mechanical drive transmission shaft |
+| **Camera Casing** | [`camera casing 1.3MF`](camera%20casing%201.3MF) | 1 | <img src="Camera%20Casing.png" width="100"> | Enclosure and protection for the vision system |
+| **Rear Spoiler** | [`spoiler.3MF`](spoiler.3MF) | 1 | <img src="Spoiler.png" width="100"> | Aerodynamic rear spoiler structure |
 
 ## 🚀 Engineering Design & Development Process
 
