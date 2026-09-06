@@ -116,11 +116,6 @@ Current best times on the 3 m x 3 m field:
 
 Team RCBC includes passionate students from EGYPT, guided by a coach. This is our **first year** competing in the WRO Future Engineers category, and each member brings unique skills to the project, from electronics to computer vision.
 
-<div align="center">
-<img src="t-photos/team_official.jpg" alt="Official Team Moment" width="600">
-<img src="t-photos/workplace.jpg" alt="Team RCBC at Work" width="600">
-</div>
-
 ### Members
 - **Yossef Hossam** (Team Leader)  
   *Role*: Electronics, Mechanical Design, Software, Strategy Integration  
