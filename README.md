@@ -46,15 +46,68 @@ Current best times on the 3 m x 3 m field:
 
 ### **Each folder contains comprehensive README documentation with specialized technical content**
 
-|| 📁 Folder | 🎯 Technical Content | 📖 Detailed Documentation |
-|-----------|----------------------|---------------------------|
-| **⚙ Mechanical_Design** | **Mechanical Engineering**<br>• 3D CAD designs<br>• Assembly instructions<br>• Gear system calculations | [🔗 Explore 3D Models & Assembly Documentation](models/README.md) |
-| **🔌 Schemes** | **Electrical Systems**<br>• Wiring diagrams<br>• Power management<br>• Component schematics & datasheets | [🔗 Explore Schematics & Wiring Documentation](schemes/README.md) |
-| **💾 Software** | **Software Algorithms**<br>• Navigation logic<br>• Sensor fusion<br>• Control systems | [🔗 Explore Software & Algorithms Documentation](src/README.md) |
-| **👥 Team Photos** | **Team Documentation**<br>• Member profiles<br>• Development journey<br>• Competition preparation | [🔗 Explore Team Photos Documentation](t-photos/README.md) |
-| **🚗 Vehicle Photos** | **Vehicle Documentation**<br>• Multi-angle views<br>• Component labeling<br>• System integration | [🔗 Explore Vehicle Photos Documentation](v-photos/README.md) |
-| **🎥 Videos** | **Performance Validation**<br>• Challenge demonstrations<br>• Engineering tests<br>• System validation | [🔗 Explore Performance Videos Documentation](video/README.md) |
-| **📚 Other Resources** | **Technical References**<br>• Component images<br>• Development resources<br>• Additional documentation | [🔗 Explore Additional Resources Documentation](other/README.md) |
+<div align="center">
+
+<table>
+  <thead>
+    <tr>
+      <th align="center">📁 Folder</th>
+      <th align="center">🎯 Technical Content</th>
+      <th align="center">📖 Detailed Documentation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center"><b>⚙️ Mechanical_Design</b></td>
+      <td align="center">
+        <b>Mechanical Engineering</b><br>
+        • 3D CAD designs<br>
+        • Assembly instructions<br>
+        • Gear system calculations
+      </td>
+      <td align="center">
+        <a href="Mechanical_Design/README.md">🔗 Explore 3D Models & Assembly Documentation</a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><b>🎨 colors</b></td>
+      <td align="center">
+        <b>Vision System Calibration</b><br>
+        • Color space analysis<br>
+        • Threshold optimization<br>
+        • Lighting condition testing
+      </td>
+      <td align="center">
+        <a href="colors/README.md">🔗 Explore Vision & Color Calibration Documentation</a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><b>💾 software</b></td>
+      <td align="center">
+        <b>Software Algorithms</b><br>
+        • Navigation logic<br>
+        • Sensor fusion<br>
+        • Control systems
+      </td>
+      <td align="center">
+        <a href="software/README.md">🔗 Explore Software & Algorithms Documentation</a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><b>📚 Others</b></td>
+      <td align="center">
+        <b>Technical References</b><br>
+        • Component images<br>
+        • Development resources<br>
+        • Additional documentation
+      </td>
+      <td align="center">
+        <a href="Others/README.md">🔗 Explore Additional Resources Documentation</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 </div>
 
 ---
