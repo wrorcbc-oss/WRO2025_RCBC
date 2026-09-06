@@ -753,13 +753,7 @@ Our development process included precise testing and validation to ensure compet
 
 Complete performance demonstrations showcasing our vehicle's capabilities:
 
-- **Open Challenge**  
-  [![Open Challenge Video](https://img.youtube.com/vi/tvqgwusap9M/0.jpg)](https://youtu.be/tvqgwusap9M)  
-  *Demonstrates autonomous navigation and speed control on a dynamic track.*
 
-- **Obstacle Challenge**  
-  [![Obstacle Challenge Video](https://img.youtube.com/vi/fQPjyJrE8p8/0.jpg)](https://youtu.be/fQPjyJrE8p8)  
-  *Shows traffic sign detection, obstacle avoidance, optimal path planning and parallel parking with smooth obstacle following at consistent distances.*
 
 **Media Production**: All logos and visual media edits were created by our team using the ***ibisPaint X*** mobile application. Video overlay commentary and caption explanation edits were also done by our team using ***CapCut*** for professional presentation of our performance videos.
 
