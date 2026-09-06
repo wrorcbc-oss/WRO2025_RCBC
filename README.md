@@ -441,7 +441,7 @@ The custom 2-gear differential ensures smooth torque distribution during turning
 
 ## 💻 **Software Architecture** <a id="software-architecture"></a>
 
-Our software implementation employs a distributed processing architecture that optimizes performance through specialized task allocation between multiple processors.
+Our software implementation employs a distributed processing architecture that optimizes performance through specialized task allocation between multiple processors. This documentation was last updated on **[september]**.
 
 ### **System Architecture Overview**
 
@@ -450,18 +450,20 @@ Our software implementation employs a distributed processing architecture that o
 <td width="60%">
 
 **Processing Distribution**:
-- **Vision Processing Unit**: Raspberry Pi 4 handling real-time image analysis and high-level decision making
-- **Sensor Fusion Unit**: esp32 managing multi-sensor data acquisition and preprocessing
-- **Communication Bridge**: Bidirectional UART protocol at 115200 baud for inter-processor data exchange
+- **Vision & Navigation Unit**: Raspberry Pi 4 handling real-time image analysis, obstacle-color detection, lane tracking, parking-marker detection, and high-level vision-based decision making
+- **Sensor & Motor Control Unit**: ESP32 running its own onboard state machine for ultrasonic wall following, obstacle avoidance, clearance handling, and corner turning, while accepting vision-based overrides from the Raspberry Pi over UART
+- **Communication Bridge**: One-directional UART protocol at 115200 baud, Raspberry Pi → ESP32, carrying vision detection and navigation results as plain-text messages
 
 **Core Software Components**:
-- [`vision_source.py`](src/open.py) - Open challenge navigation algorithms and obstacle challenge with integrated parking
-- [`calibration.py`](src/obstacle.py) - calibration for the different variables  
-- [`esp32_car.ino`](src/uart_slave.ino) - Sensor and motor management firmware
+- [`vision_navigation.py`](vision_navigation.py) - Obstacle Challenge: real-time HSV-based detection of red/green obstacle pillars, white track lane detection, magenta parking-marker detection, and proportional steering-correction calculation
+- [`final.py`](final.py) - Open Challenge: area-based wall following using dual ROI strips, orange-line turn counting, and active transmission of `A` messages over UART
+- [`esp32_car.ino`](esp32_car.ino) - Sensor and motor management firmware, onboard ultrasonic wall-following and corner-turning state machine, vision-message parser, and motor/servo control
+
+Only one of the two vision scripts (`vision_navigation.py` or `final.py`) runs on the Raspberry Pi at a time, matching the challenge currently being run.
 
 </td>
 <td width="40%">
-<img src="src/1788558229643_image.png" alt="Software Development Environment" width="100%">
+<img src="1788558229643_image.png" alt="Software Development Environment" width="100%">
 <p align="center"><em>Integrated development and testing setup</em></p>
 </td>
 </tr>
@@ -469,59 +471,80 @@ Our software implementation employs a distributed processing architecture that o
 
 ### 📄 **Development Environment & Code Deployment**
 
-#### **Raspberry Pi 4 Model B (Camera Microcontroller)**
+#### **Raspberry Pi 4 Model B (Vision Microcontroller)**
 - **Programming Language**: Python 3 for rapid development and testing
 - **Development Interface**: Direct micro USB / HDMI connection to Raspberry Pi with a live OpenCV debug window (`cv.imshow`)
 - **Core Libraries**:
-  - `opencv-python (cv2)` - Image preprocessing, HSV color masking, and contour-based object detection
-  - `numpy` - Array operations for HSV bounds and morphological kernels
-  - `pyserial` - UART serial communication with the ESP32 microcontroller
+  - `opencv-python (cv2)` - Image preprocessing, HSV color masking, and contour-based object detection, blob analysis, and feature extraction
+  - `numpy` - Array operations for HSV bounds, morphological kernels, and image-processing calculations
+  - `pyserial` - One-directional UART serial communication with the ESP32 microcontroller
 
-#### **esp32 (Sensor and Motor Microcontroller)**
+#### **ESP32 (Sensor and Motor Microcontroller)**
 - **Programming Language**: Arduino C++ for efficient sensor and motor data handling
 - **Development Interface**: Standard micro USB connection to evaluation board
 - **Essential Libraries**:
   - `ESP32Servo.h` - PWM-based control of the steering servo
-- **Communication Protocol**: UART Serial (115200 baud) between the Raspberry Pi and ESP32, used to relay vision-based obstacle data (color, distance, position)
+- **Communication Protocol**: One-directional UART Serial (115200 baud), Raspberry Pi → ESP32, used to relay vision-based obstacle, lane, and parking data
 
 #### **Development Workflow Optimization**
-We implemented magnetic USB connectors for the camera microcontroller, providing significant advantages during intensive development cycles. The magnetic interface enables rapid connection changes, prevents physical port damage from repeated use, and streamlines the programming and debugging process.
+
+We implemented magnetic USB connectors for the vision microcontroller, providing significant advantages during intensive development cycles. The magnetic interface enables rapid connection changes, prevents physical port damage from repeated use, and streamlines the programming and debugging process.
 
 #### **Code Deployment Process**
 
 1. **Raspberry Pi 4 Model B Python Deployment**:
-   - Transfer `.py` source files directly to microcontroller filesystem using magnetic USB connection
-   - Automatic execution initialization from `vision_source.py` on system startup
-   - Adding the calibration code in order to adjust the variables
-   - No compilation overhead - immediate interpreted execution for rapid iteration
+   - Transfer `.py` source files directly to the microcontroller filesystem using the magnetic USB connection
+   - Select the appropriate vision script according to the challenge currently being run
+   - Execute the selected Python source directly without a compilation stage
+   - No compilation overhead — immediate interpreted execution for rapid iteration
+   - Calibration code can be used to adjust the vision variables and HSV thresholds according to the current environment
 
-2. **esp32 Arduino Deployment**:
+2. **ESP32 Arduino Deployment**:
    - Compile source code in Arduino IDE with ESP32 board package support
    - Upload compiled binary via micro USB interface to evaluation board
    - Precompiled firmware deployment ensuring reliable sensor and motor operation
 
 ### 🎨 **Vision Processing Strategy**
-We selected the **HSV color space** for its superior performance under variable lighting conditions compared to traditional RGB representation. Detection thresholds for the red and green obstacle pillars, as well as the white track floor, were manually calibrated and fine-tuned per venue using a dedicated debug mask window.
+
+We selected the **HSV color space** for its superior performance under variable lighting conditions compared to traditional RGB representation. Detection thresholds for the red and green obstacle pillars, the white track floor, and the magenta parking markers were manually calibrated and fine-tuned per venue using a dedicated debug mask window. The standalone calibration workflow is available in the `colors` folder.
 
 **Technical Rationale**: HSV colorspace provides adequate performance for our application requirements, isolating hue independently from brightness/lighting variance, while more complex approaches (e.g. machine learning-based detection) would introduce unnecessary computational overhead without significant benefits for this specific use case.
 
-**Calibration Debug Windows**:
+**Detected Targets**:
+- **Red / Green pillars**: Dual-range red mask + single-range green mask, filtered by area and solidity
+- **White track floor (lane)**: Restricted to the bottom half of the frame, used to compute the drivable corridor's centroid when no obstacle is in view
+- **Magenta parking markers**: Detected independently every frame regardless of driving state; used to calculate the parking-gap center and width once two markers are visible
+- **Orange turn line**: Used by `final.py` for Open Challenge turn/lap counting
+
+### **Vision Processing Pipeline**
+
+1. **Image Capture**: 320×240 resolution at approximately 26 frames per second
+2. **Color Transformation**: Camera image converted into HSV colorspace for color segmentation
+3. **Color Masking**: HSV thresholds isolate the required target colors
+4. **Morphological Processing**: Binary masks are processed using morphological operations and kernels to improve detection reliability
+5. **Feature Detection**: Contour/blob analysis with size, area, and shape filtering
+6. **Target Identification**: Largest valid blob or valid set of blobs selected for reliability
+7. **Error Calculation**: Position deviation from the desired tracking point or frame center
+8. **Navigation Output**: Calculated detection information is converted into steering and navigation data
+9. **UART Transmission**: Vision results are transmitted from the Raspberry Pi to the ESP32 using the defined plain-text UART protocol
+
+### **Calibration Debug Windows**
 
 <table>
 <tr>
 <td width="50%">
-<img src="src/1788558162827_image.png" alt="Green Mask Calibration" width="100%">
+<img src="1788558162827_image.png" alt="Green Mask Calibration" width="100%">
 <p align="center"><em>Green mask calibration window</em></p>
 </td>
 <td width="50%">
-<img src="src/1788558165154_image.png" alt="Red Mask Calibration" width="100%">
+<img src="1788558165154_image.png" alt="Red Mask Calibration" width="100%">
 <p align="center"><em>Red mask calibration window</em></p>
 </td>
 </tr>
 </table>
 
 <div align="center">
-<img src="src/hard_light_condition_tests.jpg" alt="Environmental Testing Validation" width="600">
+<img src="hard_light_condition_tests.jpg" alt="Environmental Testing Validation" width="600">
 <p><em>Comprehensive testing under challenging lighting conditions including direct sunlight exposure</em></p>
 </div>
 
@@ -529,113 +552,151 @@ We selected the **HSV color space** for its superior performance under variable 
 
 #### **Obstacle Challenge Navigation**
 
+The obstacle challenge uses a distributed navigation system in which the Raspberry Pi performs visual obstacle detection while the ESP32 executes the real-time vehicle-control state machine.
+
 **State Machine Flow**:
 
+```text
 Vision Obstacle Avoidance → Clearance → Corner Turn → Wall Following (repeat)
-↑ ↑ ↑ ↑
-Camera Color Post-Obstacle Ultrasonic Ultrasonic
-Detection (R/G) Stabilizing Front Distance Left/Right PID
+        ↑                       ↑            ↑              ↑
+   Vision Color            Post-Obstacle  Ultrasonic     Ultrasonic
+   Detection (R/G)          Stabilizing   Front Distance  Left/Right
+```
 
+**Actual firmware logic (`loop()` in `esp32_car.ino`)**:
 
-**Navigation Pseudocode**:
+```text
+readAllSensors()          // ultrasonic front/left/right, with low-pass filtering
+readVisionData()          // parse latest UART message from the Raspberry Pi
 
-INITIALIZE sensors, center steering, stop motor
+IF handleVisionObstacle():
+    steer hard toward the clear side
+    drive at SPEED_OBSTACLE
 
-LOOP:
-READ ultrasonic distances (front, left, right)
-READ vision data from camera (color, distance, x-position)
+ELIF clearanceState():
+    center steering
+    drive at SPEED_CLEARANCE for 500ms after clearing an obstacle
 
-IF obstacle color == RED and distance within range:
-    STEER hard RIGHT, drive at obstacle speed
-    CONTINUE to next loop
+ELIF handleCorner():
+    continue an in-progress 90°-style corner turn
 
-IF obstacle color == GREEN and distance within range:
-    STEER hard LEFT, drive at obstacle speed
-    CONTINUE to next loop
+ELSE:
+    detectCorner()        // start a corner turn if front distance < 60cm
+    wallFollowing()       // ultrasonic-based wall centering,
+                          // or vision-driven steering if visionMode == 'A'
 
-IF recently cleared an obstacle (within clearance window):
-    CENTER steering, drive at clearance speed
-    CONTINUE to next loop
-
-IF currently turning a corner:
-    CONTINUE steering toward corner direction
-    IF front distance becomes clear OR max corner time exceeded:
-        END corner, center steering
-    CONTINUE to next loop
-
-IF front distance
+IF visionTurnCount >= 12:
+    stop permanently
+```
 
 **Color-Specific Behaviors**:
-- **Red Object Detection**: Right-side bias navigation with maintained offset
-- **Green Object Detection**: Left-side bias navigation with maintained offset  
-- **Position Maintenance**: Consistent pixel positioning for smooth obstacle tracking
+- **Red Object Detection**: When `0 < obstacleDistance ≤ 50cm`, steer to `STEERING_MAX_RIGHT` and drive at `SPEED_OBSTACLE`
+- **Green Object Detection**: When `0 < obstacleDistance ≤ 50cm`, steer to `STEERING_MAX_LEFT` and drive at `SPEED_OBSTACLE`
+- **Clearance Window**: For 500ms after leaving an obstacle state, steering is centered and speed is raised to `SPEED_CLEARANCE`
+- **Position Maintenance**: Consistent pixel positioning is used for smooth obstacle tracking
 
 <table>
 <tr>
 <td width="50%">
-<img src="src/1788558167694_image.png" alt="Red Obstacle Detection Example" width="100%">
+<img src="1788558167694_image.png" alt="Red Obstacle Detection Example" width="100%">
 <p align="center"><em>Live red obstacle detection with bounding box</em></p>
 </td>
 <td width="50%">
-<img src="src/1788558170273_image.png" alt="Green Obstacle Detection Example" width="100%">
+<img src="1788558170273_image.png" alt="Green Obstacle Detection Example" width="100%">
 <p align="center"><em>Live green obstacle detection during track navigation</em></p>
 </td>
 </tr>
 </table>
 
-### **Sensor and motor Fusion Implementation**
+<div align="center">
+<img src="example_detection.jpg" alt="Single Color Detection" style="width:80%;">
+<img src="example_all_detection.jpg" alt="Multi-Color Detection" style="width:80%;">
+</div>
 
-**Data Integration Pipeline**:
+### **Open Challenge Navigation**
+
+The Open Challenge uses `final.py` on the Raspberry Pi while keeping the same ESP32 motor-control platform.
+
+The Open Challenge navigation system is based on:
+- Area-based wall following
+- Two Region-of-Interest (ROI) strips used to estimate relative wall/track position
+- Vision-based steering correction
+- Orange-line detection for turn counting
+- UART transmission using the `A` command
+- Turn/lap counting and automatic stopping after the configured limit
+
+The `A` message contains:
+
+```text
+A,<leftArea>,<rightArea>,<error>,<steerAngle>,<turnCount>
 ```
-esp32 Sensors ←→  UART  ←→ Raspberry Pi 4 Model B → Sensor Fusion → Control Decisions
-     ↑                            ↑                   ↑               ↓
-  ToF Left                      Camera           PID Controller   Motor/Servo
-  ToF Right                     Vision           State Machine     Actuators
- Encoder Data                  IMU Data
-                               ToF Front
+
+The ESP32 recognizes this message and uses vision-driven steering when `visionMode == 'A'`.
+
+If:
+
+```text
+visionTurnCount >= 12
 ```
 
-### **Control System Implementation**
-
-**Steering Control Algorithm**:
-```python
-# Proportional controller implementation for smooth navigation
-def calculate_steering_correction(target_cx, frame_center_x):
-    error = target_cx - frame_center_x
-    steering_angle = error * KP_GAIN
-    steering_angle = clamp(steering_angle, -0.5, 0.5)
-    return steering_angle
-```
-
-### **Inter-Processor Communication**
-
-**UART Protocol Specification**:
-- **Baud Rate**: 115200 for reliable data throughput
-- **Command Structure**: Comma-separated plain-text messages terminated by newline
-- **Data Validation**: Field-count check (color, distance, x-position) before parsing
-- **Error Recovery**: Timeout-based fallback - if no valid message is received within the timeout window, the obstacle state automatically resets to "none detected"
-
-**Master (Raspberry Pi 4) → Slave (ESP32) Messages**:
-- `R,<distance>,<x_position>` - Red obstacle detected: distance in cm, horizontal pixel position
-- `G,<distance>,<x_position>` - Green obstacle detected: distance in cm, horizontal pixel position
-- `N` - No obstacle currently detected
-**Slave Response Formats**:
-- **All sensors**: `left_distance,right_distance,encoder_distance\n`
-- **Left ToF only**: `left_distance\n`
-- **Right ToF only**: `right_distance\n`
-- **Encoder only**: `encoder_distance\n`
+the vehicle stops permanently because the configured lap/turn limit has been reached.
 
 ### **Parking Maneuver Analysis**
 
 Our compact dimensions required innovative parking strategies to operate within the constrained parking space.
 
 <div align="center">
-<img src="src/parking_cube_strategy.jpg" alt="Complex Parking Scenario" height="375">
-<img src="src/parking_cubeless_strategy.jpg" alt="Simplified Parking Approach" height="375">
+<img src="parking_cube_strategy.jpg" alt="Complex Parking Scenario" height="375">
+<img src="parking_cubeless_strategy.jpg" alt="Simplified Parking Approach" height="375">
 </div>
 <p align="center">
   <em>Parking strategy analysis for different final obstacle configurations</em>
 </p>
+
+Parking-marker detection runs independently every frame, regardless of the current driving state. Two magenta markers define the parking gap; their midpoint and separation are continuously calculated and transmitted to the ESP32.
+
+### **Parking Marker Detection & Data Relay**
+
+```python
+magenta_mask = cv.inRange(hsv, lower_magenta, upper_magenta)
+magenta_contours, _ = cv.findContours(
+    magenta_mask,
+    cv.RETR_EXTERNAL,
+    cv.CHAIN_APPROX_SIMPLE
+)
+
+marker_centers = []
+
+for cnt in magenta_contours:
+    if cv.contourArea(cnt) > 150:
+        mx, my, mw, mh = cv.boundingRect(cnt)
+        marker_centers.append(mx + mw // 2)
+
+marker_centers.sort()
+
+if len(marker_centers) >= 2:
+    gap_center = (marker_centers[0] + marker_centers[-1]) // 2
+    gap_error = gap_center - frame_center_x
+    gap_width = marker_centers[-1] - marker_centers[0]
+```
+
+When two markers are visible:
+- `gap_center` represents the horizontal center of the parking gap
+- `gap_error = gap_center - frame_center_x` represents the gap's horizontal deviation from the camera center
+- `gap_width` represents the pixel separation between the two marker centers
+
+This information is transmitted as:
+
+```text
+M,<found>,<gap_error>,<gap_width>
+```
+
+The ESP32 parses and stores the values as:
+- `parkingMarkersFound`
+- `parkingGapError`
+- `parkingGapWidth`
+
+Detection is continuous, while the actual parking action is intended to occur after completing the required laps.
 
 ### **Parallel Parking Strategy Optimization**
 
@@ -643,52 +704,299 @@ Our compact dimensions required innovative parking strategies to operate within 
 
 - **Critical Clearance Design**: Narrow extension width allowed wall clearance during turns
 - **🔄 Maneuverability Enhancement**: Additional space enabled reliable parking execution
+
 **Multi-Stage Parking Sequence**:
-1. **Approach Phase**: Follow magenta wall using camera guidance
-2. **Turn-in Execution**: 80-degree turn outside parking spot
+1. **Approach Phase**: Follow the magenta wall using camera guidance while continuously monitoring the parking markers
+2. **Turn-in Execution**: 80-degree turn outside the parking spot
 3. **Alignment Phase**: Odometry-based reverse positioning
 4. **Reverse Maneuver**: Controlled backing for final alignment
 5. **Straighten Phase**: Final orientation adjustment
 
+### **Parallel Parking – Potential Improvements**
 
-### Parallel Parking – Potential Improvements
-- Pure vision-based parking using parking walls as obstacles → eliminates ToF distance dependency and works even if the parking zone is shifted elsewhere.
-- Single-motion slow parking trajectory instead of safer fast three-segment → would save ~1.5 s .
+- **Pure vision-based parking using parking walls as obstacles**:
+  - Eliminates ToF distance dependency
+  - Works even if the parking zone is shifted elsewhere
+  - Uses visible parking walls/markers as the primary geometric reference
+
+- **Single-motion slow parking trajectory instead of the safer fast three-segment approach**:
+  - Could save approximately **1.5 s**
+  - The current three-segment approach remains safer and easier to control reliably
 
 ### **Obstacle Navigation Patterns**
 
 The algorithm handles all possible obstacle combinations through systematic pattern recognition and response.
 
 <div align="center">
-<img src="src/obstacle_challenge_strategy_1.jpg" alt="Clockwise Navigation Patterns" height="375">
-<img src="src/obstacle_challenge_strategy_2.jpg" alt="Counter-clockwise Navigation Patterns" height="375">
+<img src="obstacle_challenge_strategy_1.jpg" alt="Clockwise Navigation Patterns" height="375">
+<img src="obstacle_challenge_strategy_2.jpg" alt="Counter-clockwise Navigation Patterns" height="375">
 </div>
 <p align="center">
   <em>Comprehensive obstacle combination analysis for both navigation directions</em>
 </p>
 
-### **Vision Processing Pipeline**
+The obstacle strategy assigns each obstacle color a predefined avoidance direction:
+- **Red** → right-side avoidance
+- **Green** → left-side avoidance
+- **After obstacle clearance** → centered stabilization
+- **Corner detection** → ultrasonic-based turning
+- **Post-corner** → return to wall-following behavior
 
-1. **Image Capture**: 320×240 resolution at 26 frames per second
-2. **Color Transformation**: RGB to LAB colorspace conversion
-3. **Feature Detection**: Blob analysis with size and shape filtering
-4. **Target Identification**: Largest valid blob selection for reliability
-5. **Error Calculation**: Position deviation from desired tracking point
+### **Sensor and Motor Fusion Implementation**
 
-<div align="center">
-<img src="src/example_detection.jpg" alt="Single Color Detection" style="width:80%;">
-<img src="src/example_all_detection.jpg" alt="Multi-Color Detection" style="width:80%;">
-</div>
+**Data Integration Pipeline**:
 
-### **Software & Algorithms – Potential Improvements**
-- Replace hand-tuned proportional-only steering with a full PID controller → would reduce oscillation and improve response to sudden error changes, especially during obstacle avoidance.
-- Add IMU-based heading correction (e.g. MPU6050 on the ESP32) as a backup when ultrasonic wall readings are lost or unreliable, instead of relying on ultrasonic distance alone for cornering.
-- Auto-calibrate HSV thresholds at startup using a reference color card, reducing the need for manual venue-specific tuning of the lane/red/green masks.
-- Enable bidirectional UART communication → let the ESP32 report back sensor data (front/left/right distances) to the Raspberry Pi, allowing more informed vision-based decisions instead of one-way commands.
+```text
+Raspberry Pi 4 (Vision)
+        │
+        │ One-way UART @ 115200 baud
+        │
+        ▼
+      ESP32
+        │
+        ├──────────────────────────────┐
+        │                              │
+        ▼                              ▼
+Ultrasonic Sensors              Latest Vision Message
+ Front / Left / Right            R / G / A / M / N
+        │                              │
+        └──────────────┬───────────────┘
+                       ▼
+                Onboard Fusion
+                       │
+                       ▼
+              Navigation State Machine
+                       │
+                       ▼
+              Motor / Servo Actuators
+```
 
-Complete software implementation details available in our [source code documentation](src/README.md).
+Unlike a simple "camera decides, ESP32 executes" split, the ESP32 keeps its own onboard driving logic running continuously.
 
----
+The ESP32 independently processes:
+- Front ultrasonic distance
+- Left ultrasonic distance
+- Right ultrasonic distance
+- Low-pass filtered sensor values
+- Corner detection
+- Wall-following control
+- Motor control
+- Steering-servo control
+- Current vision-command state
+
+The Raspberry Pi provides additional vision information when available. Vision information takes priority when an obstacle color is actively reported or when `visionMode == 'A'` for vision-driven Open Challenge steering.
+
+### **Control System Implementation**
+
+**Vision-side proportional steering (`vision_navigation.py`)**:
+
+```python
+error = target_cx - frame_center_x
+steering_angle = error * kp          # kp = 0.05
+steering_angle = max(-0.5, min(0.5, steering_angle))
+```
+
+**Firmware-side steering output (`esp32_car.ino`)**:
+
+```cpp
+void setSteering(int angle) {
+    int clampedAngle = constrain(
+        angle,
+        STEERING_MAX_LEFT,
+        STEERING_MAX_RIGHT
+    ); // 55–125
+
+    int invertedAngle = 180 - clampedAngle;
+    // servo mechanically mounted inverted
+
+    steeringServo.write(invertedAngle);
+}
+```
+
+### **Inter-Processor Communication**
+
+**UART Protocol Specification**:
+
+- **Baud Rate**: 115200
+- **Direction**: One-way, Raspberry Pi → ESP32
+- **Command Structure**: Comma-separated plain-text messages terminated by `\n`
+- **Timeout Handling**: If no valid message arrives within 500ms (`VISION_TIMEOUT`), the active obstacle state automatically resets to `N`
+- **Reliability Fix**: `Serial.setTimeout(10)` is set explicitly in `setup()` to prevent `readStringUntil()` from blocking the main control loop for up to 1 second if a line arrives without its `\n` terminator
+
+### **Raspberry Pi → ESP32 Message Formats**
+
+| Header | Format | Meaning |
+|--------|--------|---------|
+| `A` | `A,<leftArea>,<rightArea>,<error>,<steerAngle>,<turnCount>` | Open Challenge area-based steering + turn/lap counting — sent by `final.py` |
+| `R` / `G` / `B` | `<color>,<error>,<distance>,<steerAngle>` | Vision color detection — pixel error, distance estimate, suggested steering angle |
+| `C` | `C,<error>` | Reserved header handled by the firmware; currently not sent by any vision script |
+| `M` | `M,<found>,<gap_error>,<gap_width>` | Parking-gap position from magenta markers — parsed and stored by the firmware |
+| `N` | `N` | No obstacle currently detected — resets the active vision obstacle state |
+
+### **Vision Timeout and Fault Recovery**
+
+The ESP32 continuously tracks the age of the latest valid vision message.
+
+If no valid message is received within:
+
+```text
+VISION_TIMEOUT = 500ms
+```
+
+the firmware automatically resets the active vision obstacle state to:
+
+```text
+N
+```
+
+This prevents stale obstacle information from remaining active indefinitely and allows the ESP32's local ultrasonic navigation logic to continue operating.
+
+### 🛠️ **Engineering Notes**
+
+### **Why the ESP32 Keeps Its Own Sensor Logic**
+
+Running wall-following and corner-detection locally on the ESP32, rather than fully relying on the Raspberry Pi, keeps basic driving responsive even if the vision pipeline lags for a frame or two.
+
+The ESP32 is therefore not simply a passive actuator controller. It contains an independent real-time navigation layer based on its ultrasonic sensors.
+
+The Raspberry Pi vision system is used as an additional high-level input:
+- Vision obstacle detection overrides local navigation when a valid obstacle is reported
+- Vision-driven steering is used when `visionMode == 'A'`
+- Parking-marker information is continuously stored for the later parking stage
+- Local ultrasonic navigation remains available when no active vision override is present
+
+The 500ms vision timeout provides an automatic fallback mechanism, allowing the ESP32 to return to its local navigation behavior instead of continuing to act on stale vision information.
+
+### **Distance-Gated Obstacle Reaction**
+
+The firmware only reacts to a reported obstacle color when:
+
+```text
+0 < obstacleDistance ≤ 50cm
+```
+
+inside `handleVisionObstacle()`.
+
+This prevents the robot from reacting to detections that are visually valid but physically too far away to require immediate avoidance.
+
+### **Sensor Filtering**
+
+The ESP32's ultrasonic readings are processed using low-pass filtering before being used by the navigation logic.
+
+This reduces the effect of individual noisy measurements and prevents the wall-following or corner-detection logic from responding too aggressively to a single unstable sensor reading.
+
+The main distance inputs are:
+- Front ultrasonic
+- Left ultrasonic
+- Right ultrasonic
+
+These values are used for:
+- Front obstacle/corner detection
+- Left/right wall-following balance
+- Corner-turn initiation
+- Clearance evaluation
+- Local fallback navigation
+
+## **Technical Specifications**
+
+### **System Requirements**
+
+- **Raspberry Pi 4 Model B** running Python 3, `opencv-python`, `numpy`, and `pyserial`
+- **ESP32 dev board** with `ESP32Servo.h`, programmed via Arduino IDE
+- **L298N (or similar) DC motor driver**
+- **Standard hobby steering servo**
+- **3× ultrasonic distance sensors**: front, left, and right
+- **Camera connected to Raspberry Pi 4**
+- **UART connection**: 115200 baud, Raspberry Pi → ESP32
+
+### **File Structure**
+
+```text
+software/
+├── vision_navigation.py   # Raspberry Pi:
+│                          # Obstacle Challenge detection,
+│                          # red/green pillar detection,
+│                          # white lane tracking,
+│                          # magenta parking-gap calculation
+│
+├── final.py               # Raspberry Pi:
+│                          # Open Challenge area-based steering,
+│                          # dual-ROI wall following,
+│                          # orange-line turn counting
+│
+├── esp32_car.ino          # ESP32:
+│                          # motor/servo control,
+│                          # ultrasonic processing,
+│                          # wall-following state machine,
+│                          # corner detection,
+│                          # UART parser
+│
+└── README.md              # This documentation
+```
+
+For the standalone color-calibration workspace, see [Colors Documentation](../colors/README.md).
+
+### **Overall Software Architecture Summary**
+
+```text
+                         ┌─────────────────────────┐
+                         │       Raspberry Pi 4     │
+                         │                         │
+                         │  Python 3               │
+                         │  OpenCV                 │
+                         │  HSV Vision             │
+                         │                         │
+                         │  ┌───────────────────┐  │
+                         │  │ vision_navigation │  │
+                         │  │ Obstacle Challenge│  │
+                         │  └───────────────────┘  │
+                         │                         │
+                         │  ┌───────────────────┐  │
+                         │  │      final.py     │  │
+                         │  │  Open Challenge   │  │
+                         │  └───────────────────┘  │
+                         │                         │
+                         │  Red / Green Detection │
+                         │  White Lane Detection  │
+                         │  Magenta Parking       │
+                         │  Orange Turn Counting  │
+                         │  Steering Calculation  │
+                         └────────────┬────────────┘
+                                      │
+                                      │ UART
+                                      │ 115200 baud
+                                      │ One-way
+                                      ▼
+                         ┌─────────────────────────┐
+                         │          ESP32          │
+                         │                         │
+                         │  UART Parser            │
+                         │  Vision State           │
+                         │                         │
+                         │  Front Ultrasonic       │
+                         │  Left Ultrasonic        │
+                         │  Right Ultrasonic       │
+                         │                         │
+                         │  Local Navigation       │
+                         │  Wall Following         │
+                         │  Corner Detection       │
+                         │  Clearance State        │
+                         │  Obstacle Override      │
+                         │                         │
+                         │  Motor + Steering       │
+                         └────────────┬────────────┘
+                                      │
+                         ┌────────────┴────────────┐
+                         ▼                         ▼
+                  DC Motor Driver            Steering Servo
+                         │                         │
+                         └────────────┬────────────┘
+                                      ▼
+                              Autonomous Vehicle
+```
+
+The resulting architecture combines **camera-based perception**, **ultrasonic sensing**, **distributed processing**, **local real-time control**, **vision-based navigation**, **obstacle avoidance**, **Open Challenge wall following**, **lap/turn counting**, and **vision-assisted parking** while maintaining a lightweight and deterministic software stack suitable for real-time operation on the Raspberry Pi 4 and ESP32.
+
 
 ## 📹 **Performance Videos** <a id="performance-videos"></a>
 
