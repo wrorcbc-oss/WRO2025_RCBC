@@ -381,7 +381,7 @@ While silicone promised higher friction coefficients, our ultra-lightweight, hig
 
 ---
 
-This comprehensive mechanical documentation provides complete transparency into our design process, manufacturing methods, validation procedures, and engineering decision-making. Every aspect of our mechanical system has been optimized for the unique challenges of autonomous navigation in the WRO 2025 Future Engineers category, enabling exact duplication while demonstrating engineering excellence through detailed component specifications, assembly instructions, performance data, and real-world validation.
+This comprehensive mechanical documentation provides complete transparency into our design process, manufacturing methods, validation procedures, and engineering decision-making. Every aspect of our mechanical system has been optimized for the unique challenges of autonomous navigation in the WRO 2026 Future Engineers category, enabling exact duplication while demonstrating engineering excellence through detailed component specifications, assembly instructions, performance data, and real-world validation.
 
 For electrical systems documentation: [Schemes Documentation](../schemes/README.md)  
 For software implementation and algorithms: [Software Documentation](../src/README.md)  
