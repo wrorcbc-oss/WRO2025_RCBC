@@ -466,7 +466,7 @@ The custom 2-gear differential ensures smooth torque distribution during turning
 - **Bearing System**: Two precision bearings minimizing rotational friction
 - **Steering Load Management**: Mechanism optimized for servo torque characteristics
 - **Impact Resistance**: Validated through comprehensive testing under competition conditions
-
+  
 ### **Assembly Methodology**
 
 </div>
