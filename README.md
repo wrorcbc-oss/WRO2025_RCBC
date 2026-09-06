@@ -222,7 +222,7 @@ Throughout our development process from initial concept to competition readiness
 ## 🤖 **Our Robot** <a id="our-robot"></a>
 
 <div align="center">
-<img src="v-photos/front_view.jpg" alt="RCBC Autonomous Vehicle" width="600">
+  <img src="Car_Photos/Car_Photo.jpeg" alt="RCBC Autonomous Vehicle" width="600">
 </div>
 
 Our platform represents a breakthrough in high-performance autonomous vehicle design, achieving exceptional speed and pinpoint precision without compromising dynamic stability. The complete system seamlessly integrates a robust custom mechanical chassis with sophisticated electronics and highly optimized software algorithms
