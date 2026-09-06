@@ -39,7 +39,6 @@ Current best times on the 3 m x 3 m field:
 
 ## 📂 **Complete Documentation Structure** <a id="complete-documentation-structure"></a>
 
-<div align="center">
 
 ## 🔍 **DETAILED TECHNICAL DOCUMENTATION AVAILABLE**
 
