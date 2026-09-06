@@ -65,7 +65,7 @@ Team RCBC includes passionate students from EGYPT, guided by a coach. This is ou
 
 <div align="center">
 <img src="t-photos/team_official.jpg" alt="Official Team Moment" width="600">
-<img src="t-photos/workplace.jpg" alt="Team ANTi at Work" width="600">
+<img src="t-photos/workplace.jpg" alt="Team RCBC at Work" width="600">
 </div>
 
 ### **Members**
@@ -93,20 +93,12 @@ Team RCBC includes passionate students from EGYPT, guided by a coach. This is ou
   *Born*: 2000, EGYPT  
 <br>
 <div align="center">
-<img src="t-photos/team_fun.jpg" alt="Team ANTi Fun Photo" width="600">
+<img src="t-photos/team_fun.jpg" alt="Team RCBC Fun Photo" width="600">
 </div>
 
-> 💡 *Fun Fact*: The fun team photo (`team_fun.jpg`) is our childhood photo from 2015, when we were 9 years old, standing on a go-kart race podium!
 
 ### **Team Journey Moments**
 Throughout our development process from initial concept to competition readiness, we captured key moments demonstrating our collaborative spirit and technical dedication. These images showcase our brainstorming sessions, technical adjustments, and competition preparation.
-<div align="center">
-<img src="t-photos/team_moment.jpg" alt="Team Collaboration During National Final" width="600">
-<p><em>Team members collaborating during national final competition - discussing strategy while testing the vehicle on the field and preparing to activate it.</em></p>
-<img src="t-photos/team_moment.gif" alt="Official Competition Start with Team Excitement" width="600">
-<p><em>Dynamic view of official competition start during national final - team member pressing start button with excitement as vehicle begins its run.</em></p>
-</div>
-
 ---
 
 ## 🎯 **Challenge Overview** <a id="challenge-overview"></a>
@@ -182,7 +174,7 @@ Throughout our development process from initial concept to competition readiness
 ## 🤖 **Our Robot** <a id="our-robot"></a>
 
 <div align="center">
-<img src="v-photos/front_view.jpg" alt="ANTi Autonomous Vehicle" width="600">
+<img src="v-photos/front_view.jpg" alt="RCBC Autonomous Vehicle" width="600">
 </div>
 
 Our platform represents a breakthrough in high-performance autonomous vehicle design, achieving exceptional speed and pinpoint precision without compromising dynamic stability. The complete system seamlessly integrates a robust custom mechanical chassis with sophisticated electronics and highly optimized software algorithms
@@ -209,7 +201,7 @@ Complete vehicle documentation with detailed component identification available 
 </div>
 
 ### Potential Future Improvements (Overall Vehicle)
-- Reduce size even further to ≈ 60 × 45 × 50 mm by switching to smaller LiPo (3.7 V), a coreless motor + micro gearbox and smaller mechanic differential style.
+- Reduce size even further to ≈ 100 × 150 × 60 mm by switching to smaller LiPo (3.7 V), a coreless motor + micro gearbox and smaller mechanic differential style.
 - Implement four-wheel steering or active rear-axle 4 wheel drive to control for tighter turning radius on narrow lanes.
 - Add a very small extra second camera facing backwards for reverse parking or emergency obstacle detection.
 
@@ -283,17 +275,6 @@ The **LM2569 Buck converter** ensures reliable communication between our 3.3V mi
 
 Comprehensive thermal analysis confirmed optimal operating temperatures across all critical subsystems:
 
-<div align="center">
-<table>
-<tr>
-<td align="center"><img src="schemes/battery_thermal_test.jpg" height="180"><br><strong>Power Cell: 25°C</strong></td>
-<td align="center"><img src="schemes/microcontroller_thermal_test.jpg" height="180"><br><strong>Processor: 37°C</strong></td>
-<td align="center"><img src="schemes/motor_thermal_test.jpg" height="180"><br><strong>Drive Unit: 29°C</strong></td>
-<td align="center"><img src="schemes/power_management_thermal_test.jpg" height="180"><br><strong>Power IC: 27°C</strong></td>
-</tr>
-</table>
-</div>
-
 
 ### **Sensor Integration Challenges**
 
@@ -315,15 +296,15 @@ Implementation of magnetic USB connectors for programming interfaces significant
 
 ### **Performance Specifications**
 
-- **Maximum Theoretical Speed**: 1.72 m/s (calculated from motor RPM and drive train ratios)
+- **Maximum Theoretical Speed**: 1.52 m/s (calculated from motor RPM and drive train ratios)
 - **Operational Speed**: 1.4 m/s (PWM controlled for stability optimization)
-- **Battery Endurance**: 4-5 hours typical operation
-- **Charge Duration**: ~45 minutes via USB-C fast charging
+- **Battery Endurance**: 3-4 hours typical operation
+- **Charge Duration**: ~60 minutes via USB-C fast charging
 - **Power Consumption**: 0.8W minimum, 200-250mA typical operational current
 
 ### Powertrain – Potential Improvements
-- Switch to higher RPM coreless motor + greater 50:1 Micro Metal Gearbox → theoretical top speed > 2.3 m/s while keeping the same design.
-- Replace the 26:25 external gear with an internal planetary stage inside the N20 motor can → saves 4 mm length with direct mounting of the motor to the rear axle.
+- Switch to higher RPM coreless motor + greater 25:1 Micro Metal Gearbox → theoretical top speed > 2.3 m/s while keeping the same design.
+- Replace the 25:25 external gear with an internal planetary stage inside the JGA27-370 motor can → saves 4 mm length with direct mounting of the motor to the rear axle.
 - Active cooling (micro 10 mm fan, 0.8 g) → could improve the overall airflow in the system, allowing for faster operation and even higher stability.
 
 ---
@@ -333,9 +314,9 @@ Implementation of magnetic USB connectors for programming interfaces significant
 Our mechanical design philosophy centers on achieving maximum capability within minimal dimensions through innovative engineering and precision manufacturing.
 
 ### **Core Mechanical Specifications**
-- **Overall Dimensions**: 69mm (L) × 53mm (W) × 57mm (H)
-- **Total Mass**: Approximately 130 grams
-- **Structural Material**: 3D-printed ABS for optimal strength-to-weight ratio
+- **Overall Dimensions**: 250mm (L) × 180mm (W) × 70mm (H)
+- **Total Mass**: Approximately 800 grams
+- **Structural Material**: 3D-printed PLA+ for optimal strength-to-weight ratio
 - **Drive Configuration**: Rear-wheel drive with custom differential
 - **Steering System**: True Ackermann geometry with precision linkage
 
@@ -368,13 +349,13 @@ Our custom Ackermann steering system ensures each wheel maintains optimal alignm
 - **Wheel Articulation**: -50° to +32° range optimized for competition track dimensions
 
 ### Mechanical – Potential Improvements
-- True Ackermann geometry with adjustable tie-rod lengths for further adjustability.
-- Ball bearings on all four kingpins and differential gears → theoretical 7–9 % less rolling resistance in CAD tests.
+- True Ackermann geometry.
+- Ball bearings on the two rear wheels → theoretical 7–9 % less rolling resistance in CAD tests.
 - Possible uspension system using micro torsion bars could improve stability if the track includes ground obstacles in the future when crossing the 3 mm track.
 
 ### **Power Transmission System**
 
-The custom 4-gear differential ensures smooth torque distribution during turning maneuvers, preventing wheel slip and maintaining traction.
+The custom 2-gear differential ensures smooth torque distribution during turning maneuvers, preventing wheel slip and maintaining traction.
 
 <div align="center">
 <table align="center">
@@ -394,8 +375,8 @@ The custom 4-gear differential ensures smooth torque distribution during turning
 </p>
 
 **Gear System Architecture**:
-- **Speed Reduction**: 26:25 ratio through custom spur gear design
-- **Torque Distribution**: Four 12-tooth bevel gears enabling independent wheel rotation
+- **Speed Reduction**: 25:25 ratio through custom spur gear design
+- **Torque Distribution**: Two 25-tooth spur gears enabling independent wheel rotation transferring the torque direct from the motor.
 - **Manufacturing Precision**: 100% infill for maximum durability under load
 - **Efficiency Optimization**: Precisely calculated tooth profiles for minimal power loss
 
@@ -427,14 +408,14 @@ The custom 4-gear differential ensures smooth torque distribution during turning
 ### **Performance Engineering Analysis**
 
 **Drive Train Calculations**:
-- **Motor Specification**: 450 RPM N20 DC motor with quadrature encoder
-- **Gear Reduction**: 26:25 ratio providing optimal speed-torque balance
-- **Theoretical Maximum Velocity**: 1.72 m/s derived from wheel geometry and drive ratios
-- **Operational Velocity**: 1.4 m/s selected for optimal control stability
+- **Motor Specification**: 450 RPM JGA 25-370 DC motor with quadrature encoder
+- **Gear Reduction**: 25:25 ratio providing optimal speed-torque balance
+- **Theoretical Maximum Velocity**: 1.52 m/s derived from wheel geometry and drive ratios
+- **Operational Velocity**: 1.5 m/s selected for optimal control stability
 
 **Structural Analysis**:
-- **Motor Torque Capacity**: ~0.25 Nm at 6V, sufficient for 130g vehicle acceleration
-- **Bearing System**: Four precision bearings minimizing rotational friction
+- **Motor Torque Capacity**: ~1.25 Nm at 12V, sufficient for 800g vehicle acceleration
+- **Bearing System**: Two precision bearings minimizing rotational friction
 - **Steering Load Management**: Mechanism optimized for servo torque characteristics
 - **Impact Resistance**: Validated through comprehensive testing under competition conditions
 
@@ -448,10 +429,10 @@ The custom 4-gear differential ensures smooth torque distribution during turning
 </p>
 
 **Assembly Sequence**:
-1. **Drive System Integration**: Differential assembly and motor mounting with M2 hardware
+1. **Drive System Integration**: Differential assembly and motor mounting with M3 hardware
 2. **Steering Mechanism Installation**: Ackermann linkage and servo integration
 3. **Wheel System Assembly**: Bearing installation and wheel mounting
-4. **Electronic System Integration**: Pertinax board installation and component connection
+4. **Electronic System Integration**: Bread board installation and component connection
 5. **Final System Validation**: Comprehensive functional testing and alignment verification
 
 ---
@@ -656,12 +637,8 @@ Our compact dimensions required innovative parking strategies to operate within 
 
 ### **Parallel Parking Strategy Optimization**
 
-**🚧 Challenge**: Our compact 69mm vehicle length required extremely precise maneuvers within the tight 1.5× vehicle length parking space (103.5mm)
+**🚧 Challenge**: Our compact vehicle length required extremely precise maneuvers.
 
-**💡 Initial Solution**: We designed a strategic front extension piece providing crucial benefits:
-
-- **📏 Length Optimization**: 21mm extension increased total length to 90mm
-- **Parking Space Compliance**: Requirement became 90mm × 1.5 = 135mm
 - **Critical Clearance Design**: Narrow extension width allowed wall clearance during turns
 - **🔄 Maneuverability Enhancement**: Additional space enabled reliable parking execution
 **Multi-Stage Parking Sequence**:
@@ -671,28 +648,6 @@ Our compact dimensions required innovative parking strategies to operate within 
 4. **Reverse Maneuver**: Controlled backing for final alignment
 5. **Straighten Phase**: Final orientation adjustment
 
-> 💡🐜 ***Team Identity Discovery***: The distinctive front extension piece created a visual resemblance to an **ANT**'s mandible, perfectly aligning with our team name and establishing a memorable identity!
-<p align="center">
-  <img src="src/parallel_park_setup.jpg" alt="Original 69mm Vehicle in Parking Lot" height="350">
-  <img src="src/parallel_park_strategy.jpg" alt="90mm Vehicle with Extension" height="350">
-</p>
-<p align="center">
-  <em>1) Original 69mm vehicle demonstrating parking constraints • 2) Extended 90mm vehicle with strategic front piece implementation</em>
-</p>
-
-**💡 Final Evolution**: After extensive testing, we iterated on the extension design to further enhance safety and performance:
-- **📏 Enhanced Length**: Increased extension to 41mm for total vehicle length of 110mm
-- **Parking Space Adjustment**: Expanded requirement to 110mm × 1.5 = 165mm
-- **Improved Safety Margin**: Greater clearance for multi-turn maneuvers while maintaining higher speeds
-- **Design Refinements**: Incorporated competition stickers creating "ANTi" branding and ant-inspired eyes
-- **Maneuver Strategy**: Retained multiple-turn parking for optimal speed-safety balance
-<p align="center">
-  <img src="src/parallel_park_final_setup.jpg" alt="Final 110mm Vehicle in Extended Parking Lot" height="275">
-  <img src="src/parallel_park_final_strategy.jpg" alt="Final Extension Design Detail" height="275">
-</p>
-<p align="center">
-  <em>1) Final 110mm vehicle in 165mm parking space with measurement verification • 2) Close-up of refined extension with custom branding and visual enhancements</em>
-</p>
 
 ### Parallel Parking – Potential Improvements
 - Pure vision-based parking using parking walls as obstacles → eliminates ToF distance dependency and works even if the parking zone is shifted elsewhere.
